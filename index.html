@@ -3,113 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morpankh Cafe & Restro Menu</title>
+    <title>Morpankh Cafe & Restro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #121212; color: #fff; font-family: sans-serif; padding: 20px; }
-        .main-category { 
-            background: #d4af37; color: #000; padding: 15px; margin: 10px 0; 
-            border-radius: 8px; font-weight: bold; cursor: pointer; 
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .category-content { display: none; padding: 10px; background: #1e1e1e; border-radius: 0 0 8px 8px; margin-bottom: 10px; }
-        .food-card { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #333; }
-        .add-btn { background: #d4af37; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: #121212; color: #f4f4f4; padding-bottom: 140px; }
+        header { background: linear-gradient(135deg, #1a1a1a, #0a0a0a); padding: 30px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
+        .logo { font-size: 45px; margin-bottom: 5px; }
+        header h1 { font-family: 'Cinzel', serif; color: #d4af37; font-size: 24px; }
+        .owner-info { font-size: 13px; color: #ccc; margin-top: 10px; }
+        .container { max-width: 500px; margin: 20px auto; padding: 0 15px; }
+        
+        .service-box { background: #1e1e1e; padding: 20px; border-radius: 16px; border: 1px solid #d4af37; margin-bottom: 20px; }
+        .input-field { width: 100%; padding: 12px; background: #252525; border: 1px solid #444; border-radius: 8px; color: #fff; margin-top: 10px; }
+        
+        .main-category { background: #d4af37; color: #000; padding: 15px; margin: 10px 0; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
+        .category-content { display: none; padding: 5px 0; }
+        
+        .food-card { background: #1a1a1a; padding: 12px; margin-bottom: 10px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #333; }
+        .add-btn { background: #d4af37; color: #000; border: none; padding: 8px 15px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        
+        .cart-bar { position: fixed; bottom: 0; width: 100%; max-width: 500px; background: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; }
     </style>
 </head>
 <body>
+    <header>
+        <div class="logo">🦚</div>
+        <h1>Morpankh Cafe & Restro</h1>
+        <div class="owner-info">
+            Kishan Asopa | 7014808515, 9928427598<br>
+            Napasar, 334201
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="service-box">
+            <input type="text" id="custName" class="input-field" placeholder="अपना नाम लिखें">
+            <div style="margin-top:15px;">
+                <label><input type="radio" name="type" onclick="show('dine')" checked> टेबल पर खाना (Dine-In)</label>
+                <label style="margin-left:15px;"><input type="radio" name="type" onclick="show('del')"> होम डिलीवरी (Delivery)</label>
+            </div>
+            <input type="text" id="dine" class="input-field" placeholder="टेबल नंबर लिखें">
+            <input type="text" id="del" class="input-field" placeholder="अपना पूरा पता लिखें" style="display:none">
+        </div>
+
+        <div class="main-category" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">🍕 पिज्जा मेन्यू</div>
+        <div class="category-content">
+            <div class="food-card"><div>Veg Pizza<br><b>₹170</b></div><button class="add-btn" onclick="add(this, 'Veg Pizza', 170)">जोड़ें</button></div>
+            <div class="food-card"><div>Onion Pizza<br><b>₹150</b></div><button class="add-btn" onclick="add(this, 'Onion Pizza', 150)">जोड़ें</button></div>
+        </div>
+    </div>
+
+    <div class="cart-bar">
+        <div>कुल बिल: ₹<span id="total">0</span></div>
+        <button class="add-btn" onclick="order()">ऑर्डर भेजें</button>
+    </div>
 
     <script>
-        function toggleMenu(id) {
-            let el = document.getElementById(id);
-            el.style.display = (el.style.display === "block") ? "none" : "block";
+        let cart = {}, total = 0;
+        function show(id) { 
+            document.getElementById('dine').style.display = id=='dine'?'block':'none'; 
+            document.getElementById('del').style.display = id=='del'?'block':'none'; 
+        }
+        function add(btn, n, p) { 
+            cart[n] = (cart[n] || 0) + 1;
+            total += p;
+            document.getElementById('total').innerText = total;
+            btn.innerText = "Added!";
+            setTimeout(() => btn.innerText = "जोड़ें", 1000);
+        }
+        function order() { 
+            let name = document.getElementById('custName').value;
+            if(!name) { alert("कृपया अपना नाम लिखें!"); return; }
+            let msg = `नया ऑर्डर: ${name}\nकुल बिल: ₹${total}`;
+            window.open("https://wa.me/917014808515?text=" + encodeURIComponent(msg));
         }
     </script>
-
-    <!-- Pizza Section -->
-    <div class="main-category" onclick="toggleMenu('pizza')">🍕 PIZZA (पिज्जा) <span>▼</span></div>
-    <div id="pizza" class="category-content">
-        <div class="food-card">Veg Pizza <span>₹170</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Onion Pizza <span>₹150</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Cheese Pizza <span>₹230</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Onion Capsicum Pizza <span>₹200</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Baby Corn Pizza <span>₹210</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Pizza <span>₹200</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Tomato Pizza <span>₹190</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Morpankh Pizza <span>₹350</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Extra Cheese <span>₹70</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Burger Section -->
-    <div class="main-category" onclick="toggleMenu('burger')">🍔 BURGER (बर्गर) <span>▼</span></div>
-    <div id="burger" class="category-content">
-        <div class="food-card">Veg Burger <span>₹50</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Cheese Burger <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Cheese Burger <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Burger <span>₹70</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Double Tikki Burger <span>₹150</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Sandwich Section -->
-    <div class="main-category" onclick="toggleMenu('sandwich')">🥪 SANDWICH (सैंडविच) <span>▼</span></div>
-    <div id="sandwich" class="category-content">
-        <div class="food-card">Veg Sandwich <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Cheese Sandwich <span>₹120</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Cheese Sandwich <span>₹140</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Chocolate Sandwich <span>₹150</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Sandwich <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Masala Cheese Sandwich <span>₹180</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Pizza Sandwich <span>₹180</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Fries Section -->
-    <div class="main-category" onclick="toggleMenu('fries')">🍟 FRENCH FRIES (फ्रेंच फ्राई) <span>▼</span></div>
-    <div id="fries" class="category-content">
-        <div class="food-card">French Fries (Full) <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">French Fries (Half) <span>₹60</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Fries (Full) <span>₹120</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Fries (Half) <span>₹80</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Pav Bhaji Section -->
-    <div class="main-category" onclick="toggleMenu('pavbhaji')">🍞 PAV BHAJI (पावभाजी) <span>▼</span></div>
-    <div id="pavbhaji" class="category-content">
-        <div class="food-card">Masala Pav Bhaji <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Pav Bhaji <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Extra Pav <span>₹20</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Extra Bhaji <span>₹30</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Chowmein Section -->
-    <div class="main-category" onclick="toggleMenu('chowmein')">🍜 CHOWMEIN (चाऊमीन) <span>▼</span></div>
-    <div id="chowmein" class="category-content">
-        <div class="food-card">Veg Chowmein <span>₹60</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Garlic Chowmein <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Schezwan Chowmein <span>₹90</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Chowmein <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Chowmein Manchurian <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Morpankh Chowmein <span>₹150</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Manchurian Section -->
-    <div class="main-category" onclick="toggleMenu('manchurian')">🧆 MANCHURIAN (मन्चुरियन) <span>▼</span></div>
-    <div id="manchurian" class="category-content">
-        <div class="food-card">Dry Manchurian <span>₹90</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Gravy Manchurian <span>₹110</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Manchurian <span>₹150</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Manchurian Chowmein <span>₹100</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Dosa Section -->
-    <div class="main-category" onclick="toggleMenu('dosa')">🥞 DOSA (डोसा) <span>▼</span></div>
-    <div id="dosa" class="category-content">
-        <div class="food-card">Masala Dosa <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Plain Dosa <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Masala Dosa <span>₹130</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Cheese Masala Dosa <span>₹140</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Pizza Dosa <span>₹200</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Sargam Dosa <span>₹250</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Morpankh Dosa <span>₹399</span> <button class="add-btn">Add</button></div>
-    </div>
-
 </body>
 </html>
