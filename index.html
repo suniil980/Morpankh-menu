@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morpankh Cafe & Restro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
         body { background-color: #121212; color: #fff; padding-bottom: 120px; }
         header { background: #1a1a1a; padding: 20px; text-align: center; border-bottom: 2px solid #d4af37; }
         .container { max-width: 500px; margin: 20px auto; padding: 15px; }
@@ -26,6 +25,7 @@
         <div class="cat-title" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='block'?'none':'block')">🍕 PIZZA</div>
         <div style="display:none">
             <div class="item">Veg Pizza - ₹170 <button class="btn" onclick="add('Veg Pizza', 170)">Add</button></div>
+            <div class="item">Onion Pizza - ₹150 <button class="btn" onclick="add('Onion Pizza', 150)">Add</button></div>
             <div class="item">Paneer Pizza - ₹230 <button class="btn" onclick="add('Paneer Pizza', 230)">Add</button></div>
         </div>
 
@@ -46,13 +46,37 @@
             <div class="item">French Fries (Full) - ₹80 <button class="btn" onclick="add('French Fries Full', 80)">Add</button></div>
             <div class="item">Masala Fries (Full) - ₹120 <button class="btn" onclick="add('Masala Fries Full', 120)">Add</button></div>
         </div>
-        
-        <!-- Aap isi tarah baki categories bhi add kar sakte hain -->
+
+        <div class="cat-title" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='block'?'none':'block')">🍞 PAV BHAJI</div>
+        <div style="display:none">
+            <div class="item">Pav Bhaji - ₹80 <button class="btn" onclick="add('Pav Bhaji', 80)">Add</button></div>
+            <div class="item">Extra Pav - ₹20 <button class="btn" onclick="add('Extra Pav', 20)">Add</button></div>
+        </div>
+
+        <div class="cat-title" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='block'?'none':'block')">🍜 NOODLES</div>
+        <div style="display:none">
+            <div class="item">Veg Chowmein - ₹60 <button class="btn" onclick="add('Veg Chowmein', 60)">Add</button></div>
+            <div class="item">Paneer Chowmein - ₹100 <button class="btn" onclick="add('Paneer Chowmein', 100)">Add</button></div>
+        </div>
+
+        <div class="cat-title" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='block'?'none':'block')">🧆 MANCHURIAN</div>
+        <div style="display:none">
+            <div class="item">Dry Manchurian - ₹90 <button class="btn" onclick="add('Dry Manchurian', 90)">Add</button></div>
+            <div class="item">Gravy Manchurian - ₹110 <button class="btn" onclick="add('Gravy Manchurian', 110)">Add</button></div>
+        </div>
+
+        <div class="cat-title" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='block'?'none':'block')">🥞 DOSA</div>
+        <div style="display:none">
+            <div class="item">Masala Dosa - ₹100 <button class="btn" onclick="add('Masala Dosa', 100)">Add</button></div>
+            <div class="item">Paneer Dosa - ₹130 <button class="btn" onclick="add('Paneer Dosa', 130)">Add</button></div>
+        </div>
     </div>
+
     <div class="footer">
         <p>Total: ₹<span id="total">0</span></p>
         <button class="btn" style="width:100%;" onclick="sendOrder()">Place Order</button>
     </div>
+
     <script>
         let total = 0, items = [];
         function add(n, p) { total += p; items.push(n); document.getElementById('total').innerText = total; }
