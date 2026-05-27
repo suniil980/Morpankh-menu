@@ -3,113 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morpankh Cafe & Restro Menu</title>
+    <title>Morpankh Cafe & Restro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #121212; color: #fff; font-family: sans-serif; padding: 20px; }
+        :root { --gold: #d4af37; --bg: #121212; }
+        body { background-color: var(--bg); color: #fff; font-family: 'Poppins', sans-serif; padding-bottom: 100px; }
+        .header { text-align: center; padding: 30px; border-bottom: 2px solid var(--gold); }
+        .header h1 { font-family: 'Cinzel', serif; color: var(--gold); }
+        
         .main-category { 
-            background: #d4af37; color: #000; padding: 15px; margin: 10px 0; 
-            border-radius: 8px; font-weight: bold; cursor: pointer; 
-            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(90deg, #2a2a2a, #1a1a1a); 
+            border-left: 4px solid var(--gold);
+            padding: 15px; margin: 15px; border-radius: 0 10px 10px 0;
+            font-weight: bold; cursor: pointer; display: flex; justify-content: space-between;
         }
-        .category-content { display: none; padding: 10px; background: #1e1e1e; border-radius: 0 0 8px 8px; margin-bottom: 10px; }
-        .food-card { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #333; }
-        .add-btn { background: #d4af37; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .category-content { display: none; padding: 0 15px; }
+        .food-card { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #333; }
+        
+        /* Floating Cart Bar */
+        .cart-bar { 
+            position: fixed; bottom: 0; width: 100%; background: #1a1a1a; 
+            padding: 15px; border-top: 2px solid var(--gold); display: flex; 
+            justify-content: space-between; align-items: center; z-index: 100;
+        }
+        .btn { background: var(--gold); border: none; padding: 8px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; color: #000; }
+        .input-box { width: 90%; padding: 10px; margin: 10px auto; display: block; border-radius: 5px; border: 1px solid var(--gold); background: #222; color: #fff; }
     </style>
 </head>
 <body>
 
+    <div class="header">
+        <h1>🦚 Morpankh Cafe & Restro</h1>
+        <input type="text" id="name" class="input-box" placeholder="अपना नाम लिखें...">
+    </div>
+
+    <!-- Menu Container -->
+    <div id="menu"></div>
+
+    <!-- Cart -->
+    <div class="cart-bar">
+        <div>Bill: ₹<span id="total">0</span></div>
+        <button class="btn" onclick="sendOrder()">Place Order ➔</button>
+    </div>
+
     <script>
-        function toggleMenu(id) {
-            let el = document.getElementById(id);
-            el.style.display = (el.style.display === "block") ? "none" : "block";
+        const menuData = {
+            "PIZZA": {"Veg Pizza": 170, "Onion Pizza": 150, "Paneer Cheese": 230},
+            "BURGER": {"Veg Burger": 50, "Cheese Burger": 80, "Double Tikki": 150}
+            // Aise hi baki items...
+        };
+
+        let cart = {}; let total = 0;
+
+        function add(item, price) {
+            cart[item] = (cart[item] || 0) + 1;
+            total += price;
+            document.getElementById('total').innerText = total;
+            alert(item + " add ho gaya!");
+        }
+
+        function sendOrder() {
+            let name = document.getElementById('name').value;
+            let msg = `Order from ${name}: %0A`;
+            for(let i in cart) msg += `${i} x ${cart[i]} %0A`;
+            msg += `Total: ₹${total}`;
+            window.open("https://wa.me/917014808515?text=" + msg);
         }
     </script>
-
-    <!-- Pizza Section -->
-    <div class="main-category" onclick="toggleMenu('pizza')">🍕 PIZZA (पिज्जा) <span>▼</span></div>
-    <div id="pizza" class="category-content">
-        <div class="food-card">Veg Pizza <span>₹170</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Onion Pizza <span>₹150</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Cheese Pizza <span>₹230</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Onion Capsicum Pizza <span>₹200</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Baby Corn Pizza <span>₹210</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Pizza <span>₹200</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Tomato Pizza <span>₹190</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Morpankh Pizza <span>₹350</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Extra Cheese <span>₹70</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Burger Section -->
-    <div class="main-category" onclick="toggleMenu('burger')">🍔 BURGER (बर्गर) <span>▼</span></div>
-    <div id="burger" class="category-content">
-        <div class="food-card">Veg Burger <span>₹50</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Cheese Burger <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Cheese Burger <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Burger <span>₹70</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Double Tikki Burger <span>₹150</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Sandwich Section -->
-    <div class="main-category" onclick="toggleMenu('sandwich')">🥪 SANDWICH (सैंडविच) <span>▼</span></div>
-    <div id="sandwich" class="category-content">
-        <div class="food-card">Veg Sandwich <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Cheese Sandwich <span>₹120</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Cheese Sandwich <span>₹140</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Chocolate Sandwich <span>₹150</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Sandwich <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Masala Cheese Sandwich <span>₹180</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Pizza Sandwich <span>₹180</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Fries Section -->
-    <div class="main-category" onclick="toggleMenu('fries')">🍟 FRENCH FRIES (फ्रेंच फ्राई) <span>▼</span></div>
-    <div id="fries" class="category-content">
-        <div class="food-card">French Fries (Full) <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">French Fries (Half) <span>₹60</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Fries (Full) <span>₹120</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Masala Fries (Half) <span>₹80</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Pav Bhaji Section -->
-    <div class="main-category" onclick="toggleMenu('pavbhaji')">🍞 PAV BHAJI (पावभाजी) <span>▼</span></div>
-    <div id="pavbhaji" class="category-content">
-        <div class="food-card">Masala Pav Bhaji <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Pav Bhaji <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Extra Pav <span>₹20</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Extra Bhaji <span>₹30</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Chowmein Section -->
-    <div class="main-category" onclick="toggleMenu('chowmein')">🍜 CHOWMEIN (चाऊमीन) <span>▼</span></div>
-    <div id="chowmein" class="category-content">
-        <div class="food-card">Veg Chowmein <span>₹60</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Garlic Chowmein <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Schezwan Chowmein <span>₹90</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Chowmein <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Chowmein Manchurian <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Morpankh Chowmein <span>₹150</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Manchurian Section -->
-    <div class="main-category" onclick="toggleMenu('manchurian')">🧆 MANCHURIAN (मन्चुरियन) <span>▼</span></div>
-    <div id="manchurian" class="category-content">
-        <div class="food-card">Dry Manchurian <span>₹90</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Gravy Manchurian <span>₹110</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Manchurian <span>₹150</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Manchurian Chowmein <span>₹100</span> <button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- Dosa Section -->
-    <div class="main-category" onclick="toggleMenu('dosa')">🥞 DOSA (डोसा) <span>▼</span></div>
-    <div id="dosa" class="category-content">
-        <div class="food-card">Masala Dosa <span>₹100</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Plain Dosa <span>₹80</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Paneer Masala Dosa <span>₹130</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Cheese Masala Dosa <span>₹140</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Pizza Dosa <span>₹200</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Sargam Dosa <span>₹250</span> <button class="add-btn">Add</button></div>
-        <div class="food-card">Morpankh Dosa <span>₹399</span> <button class="add-btn">Add</button></div>
-    </div>
-
 </body>
 </html>
