@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morpankh Cafe & Restro</title>
     <style>
-        body { background-color: #121212; color: #fff; font-family: sans-serif; padding: 20px; margin-bottom: 120px; }
+        body { background-color: #121212; color: #fff; font-family: sans-serif; padding: 20px; margin-bottom: 100px; }
         .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #d4af37; padding-bottom: 10px; }
         .service-box { background: #1e1e1e; padding: 15px; border-radius: 8px; border: 1px solid #d4af37; margin-bottom: 20px; }
         .input-field { width: 100%; padding: 10px; margin: 5px 0; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; box-sizing: border-box; }
         .main-category { background: #d4af37; color: #000; padding: 15px; margin: 10px 0; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
         .category-content { display: none; padding: 10px; background: #1e1e1e; border-radius: 8px; margin-bottom: 10px; }
         .food-card { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #333; }
-        .btn-group { display: flex; gap: 5px; }
-        .add-btn { background: #d4af37; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        .sub-btn { background: #ff4444; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; color: white; font-weight: bold; }
-        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; padding: 15px; border-top: 2px solid #d4af37; box-sizing: border-box; }
+        .add-btn { background: #d4af37; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; box-sizing: border-box; }
         .insta-link { color: #d4af37; text-decoration: none; font-weight: bold; display: block; margin-top: 10px; }
     </style>
 </head>
@@ -23,31 +21,39 @@
 
 <div class="header">
     <h2>MORPANKH CAFE & RESTRO</h2>
-    <p style="font-size: 14px;">Owner: Kishan Asopa | 7014808515<br>Karant Balaji Market, 1st Floor, Napasar, Bikaner</p>
-    <a href="https://www.instagram.com/AAPKI_ID/" target="_blank" class="insta-link">📸 Instagram par follow karein</a>
+    <p style="font-size: 14px;">Owner: Kishan Asopa | 7014808515, 9928427598<br>Karant Balaji Market, 1st Floor, Girls School ke samne, Napasar, Bikaner</p>
+    <!-- Yahan apni link daalein -->
+    <a href="https://www.instagram.com/AAPKI_ID/" target="_blank" class="insta-link">📸 Instagram par humein follow karein</a>
 </div>
 
 <div class="service-box">
     <input type="text" id="custName" class="input-field" placeholder="अपना नाम लिखें">
-    <input type="text" id="dine" class="input-field" placeholder="टेबल नंबर या पता लिखें">
+    <label><input type="radio" name="type" onclick="document.getElementById('dine').style.display='block'; document.getElementById('del').style.display='none';" checked> टेबल पर खाना</label>
+    <label style="margin-left:10px;"><input type="radio" name="type" onclick="document.getElementById('dine').style.display='none'; document.getElementById('del').style.display='block';"> होम डिलीवरी</label>
+    <input type="text" id="dine" class="input-field" placeholder="टेबल नंबर लिखें">
+    <input type="text" id="del" class="input-field" placeholder="अपना पूरा पता लिखें" style="display:none">
 </div>
 
 <div id="menu-container"></div>
 
 <div class="cart-bar">
-    <div style="margin-bottom: 10px;"><b>आपका ऑर्डर:</b> <span id="cart-items">Khali</span></div>
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div>Total: ₹<span id="total">0</span></div>
-        <button class="add-btn" onclick="order()" style="padding: 10px 20px;">WhatsApp पर ऑर्डर भेजें</button>
-    </div>
+    <div>कुल बिल: ₹<span id="total">0</span></div>
+    <button class="add-btn" onclick="order()">ऑर्डर भेजें</button>
 </div>
 
 <script>
     const menu = {
         "🌯 Roll": {"Veg Roll": 100, "Frankie Roll": 120},
-        "🍕 पिज्जा": {"Veg Pizza": 170, "Paneer Pizza": 230},
-        "🍔 बर्गर": {"Veg Burger": 50, "Cheese Burger": 80}
-        // ... baaki items yahan pehle jaise hi rahenge
+        "🥟 Momos": {"Steam Momos": 100, "Fried Momos": 120},
+        "🥗 Chat": {"Kurkure Masala Chat": 49, "Lesh Cocktail Bhel": 79, "Chips Masala Kurkure Chat": 89},
+        "🍕 पिज्जा": {"Veg Pizza": 170, "Onion Pizza": 150, "Paneer Cheese Pizza": 230, "Onion Capsicum Pizza": 200, "Baby Corn Pizza": 210, "Masala Pizza": 200, "Tomato Pizza": 190, "Morpankh Pizza": 350, "Extra Cheese": 70},
+        "🍔 बर्गर": {"Veg Burger": 50, "Paneer Cheese Burger": 100, "Cheese Burger": 80, "Masala Burger": 70, "Double Tikki Burger": 150},
+        "🥪 सैंडविच": {"Veg Sandwich": 100, "Cheese Sandwich": 120, "Paneer Cheese Sandwich": 140, "Chocolate Sandwich": 150, "Masala Sandwich": 100, "Paneer Masala Cheese Sandwich": 180, "Pizza Sandwich": 180},
+        "🍟 फ्रेंच फ्राई": {"French Fries (Full)": 80, "French Fries (Half)": 60, "Masala French Fries (Full)": 120, "Masala French Fries (Half)": 80},
+        "🍞 पावभाजी": {"Masala Pav Bhaji": 100, "Pav Bhaji": 80, "Extra Pav": 20, "Extra Bhaji": 30},
+        "🍜 चाऊमीन": {"Veg Chowmein": 60, "Garlic Chowmein": 80, "Schezwan Chowmein": 90, "Paneer Chowmein": 100, "Chowmein Manchurian": 100, "Morpankh Chowmein": 150},
+        "🧆 मन्चुरियन": {"Dry Manchurian": 90, "Gravy Manchurian": 110, "Paneer Manchurian": 150, "Manchurian Chowmein": 100},
+        "🥞 डोसा": {"Masala Dosa": 100, "Plain Dosa": 80, "Paneer Masala Dosa": 130, "Cheese Masala Dosa": 140, "Pizza Dosa": 200, "Sargam Dosa": 250, "Morpankh Dosa": 399}
     };
 
     let cart = {}, total = 0;
