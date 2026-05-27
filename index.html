@@ -56,6 +56,8 @@
         "🥞 डोसा": {"Masala Dosa": 100, "Plain Dosa": 80, "Paneer Masala Dosa": 130, "Cheese Masala Dosa": 140, "Pizza Dosa": 200, "Sargam Dosa": 250, "Morpankh Dosa": 399}
     };
 
+    };
+
     const container = document.getElementById('menu-container');
     let cart = {}, total = 0;
 
@@ -67,15 +69,16 @@
     }
 
     function add(n, p) { cart[n] = (cart[n]||0)+1; total += p; document.getElementById('total').innerText = total; }
-    function order() { 
+       function order() { 
         let name = document.getElementById('custName').value;
+        let details = document.getElementById('dine').value;
         if(!name) { alert("अपना नाम लिखें!"); return; }
-        let type = document.querySelector('input[name="type"]:checked').nextSibling.textContent.trim();
-        let details = type === 'टेबल पर खाना' ? document.getElementById('dine').value : document.getElementById('del').value;
-        let msg = `*ORDER - Morpankh Cafe & Restro*%0A--------------------------%0A👤 *Name:* ${name}%0A📍 *Type:* ${type}%0A🏠 *Details:* ${details}%0A--------------------------%0A`;
-        for(let i in cart) msg += `${i} x ${cart[i]}%0A`;
-        msg += `--------------------------%0A💰 *Total Bill:* ₹${total}`;
+        let msg = `*ORDER - Morpankh Cafe & Restro*%0A👤 Name: ${name}%0A📍 Details: ${details}%0A--------------------------%0A`;
+        for(let i in cart) if(cart[i] > 0) msg += `${i} x ${cart[i]}%0A`;
+        msg += `--------------------------%0A💰 Total Bill: ₹${total}`;
         window.open("https://wa.me/917014808515?text=" + msg);
+    }
+
     }
 </script>
 </body>
