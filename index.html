@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morpankh Cafe & Restro | Premium Menu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
         body { background-color: #121212; color: #f4f4f4; padding-bottom: 120px; }
@@ -16,7 +16,7 @@
             border-bottom: 3px solid #d4af37; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-        .logo { font-size: 45px; margin-bottom: 5px; filter: drop-shadow(0px 0px 8px #d4af37); }
+        .logo { font-size: 50px; margin-bottom: 5px; filter: drop-shadow(0px 0px 8px #d4af37); }
         header h1 { font-family: 'Cinzel', serif; font-size: 26px; color: #d4af37; letter-spacing: 2px; }
         header p { color: #ccc; font-size: 12px; margin-top: 5px; letter-spacing: 1px; }
 
@@ -48,26 +48,46 @@
         
         .address-text { font-size: 11px; color: #aaa; margin-top: 10px; line-height: 1.4; }
 
-        .category-title { 
-            color: #d4af37; font-family: 'Cinzel', serif; font-size: 18px; margin: 35px 0 15px; 
-            border-left: 3px solid #d4af37; padding-left: 10px; letter-spacing: 1px;
+        /* Main Category Design */
+        .main-category {
+            background: linear-gradient(90deg, #aa841b, #d4af37);
+            color: #121212;
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 10px 15px;
+            margin: 40px 0 15px 0;
+            border-radius: 8px;
+            text-shadow: 0px 1px 2px rgba(255,255,255,0.3);
+            box-shadow: 0 4px 12px rgba(212,183,55,0.2);
+        }
+
+        /* Sub Category Design */
+        .sub-category { 
+            color: #d4af37; font-size: 15px; font-weight: 600; margin: 15px 0 10px 5px; 
+            border-left: 3px solid #d4af37; padding-left: 8px; letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .food-card { 
-            background: #1e1e1e; border-radius: 16px; margin-bottom: 18px; display: flex; 
+            background: #1e1e1e; border-radius: 16px; margin-bottom: 14px; display: flex; 
             align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); overflow: hidden; border: 1px solid rgba(255,255,255,0.03);
         }
-        .food-img { width: 110px; height: 110px; object-fit: cover; }
+        /* Bade Icons Setup */
+        .food-img { width: 85px; height: 85px; object-fit: cover; background-color: #252525; display: flex; align-items: center; justify-content: center; font-size: 40px; }
         .food-info { padding: 12px 15px; flex: 1; position: relative; }
         
         .veg-badge { border: 1px solid #2e7d32; padding: 1px 5px; font-size: 9px; color: #4caf50; font-weight: bold; display: inline-block; margin-bottom: 4px; border-radius: 3px; }
-        .food-info h3 { font-size: 15px; color: #fff; font-weight: 600; }
-        .desc { font-size: 11px; color: #aaa; margin: 4px 0 8px; line-height: 1.4; padding-right: 60px; }
-        .price { font-weight: 600; color: #d4af37; font-size: 15px; display: block; }
+        
+        /* Combo Title Hindi + English */
+        .food-title-combo { font-size: 15px; color: #fff; font-weight: 600; display: block; margin-bottom: 6px; line-height: 1.4; }
+        .food-title-combo span { color: #d4af37; font-size: 13px; font-weight: 400; display: block; }
+        
+        .price { font-weight: 700; color: #fff; font-size: 16px; display: block; }
         
         .add-btn { 
-            position: absolute; right: 15px; bottom: 12px; background: linear-gradient(135deg, #d4af37, #aa841b); 
-            color: #121212; border: none; padding: 6px 16px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: bold; box-shadow: 0 2px 8px rgba(212,183,55,0.3);
+            position: absolute; right: 15px; bottom: 15px; background: linear-gradient(135deg, #d4af37, #aa841b); 
+            color: #121212; border: none; padding: 6px 18px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: bold; box-shadow: 0 2px 8px rgba(212,183,55,0.3);
         }
         .add-btn:active { transform: scale(0.95); }
 
@@ -116,58 +136,116 @@
             <input type="text" id="delivery_address" class="input-field" placeholder="अपना पूरा पता लिखें (Napasar)">
 
             <div class="address-text">
-                📍 Karant Balaji Market, 1st Floor, Napasar, Bikaner | 📞 +91 7014808515
+                📍 Karant Balaji Market, 1st Floor, Napasar, Bikaner<br>📞 +91 7014808515 | +91 9928427598
             </div>
         </div>
 
-        <!-- CATEGORY: PIZZA -->
-        <h2 class="category-title">🍕 Premium Pizza</h2>
-        <div class="food-card">
-            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300" class="food-img">
-            <div class="food-info">
-                <span class="veg-badge">● VEG</span>
-                <h3>Cheese Pizza</h3>
-                <p class="desc">Loaded with premium mozzarella cheese and classic sauce.</p>
-                <span class="price">₹150</span>
-                <button class="add-btn" onclick="addToCart('Cheese Pizza', 150)">Add</button>
-            </div>
-        </div>
-        <div class="food-card">
-            <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=300" class="food-img">
-            <div class="food-info">
-                <span class="veg-badge">● VEG</span>
-                <h3>Paneer Pizza</h3>
-                <p class="desc">Fresh paneer cubes, capsicum, onions, and golden corn.</p>
-                <span class="price">₹180</span>
-                <button class="add-btn" onclick="addToCart('Paneer Pizza', 180)">Add</button>
-            </div>
-        </div>
+        <!-- MAIN CATEGORY: PIZZA ZONE -->
+        <div class="main-category">🍕 PIZZA ZONE / पिज्जा जोन</div>
+        
+        <div class="sub-category">Classic Pizzas / क्लासिक पिज्जा</div>
+        <div class="food-card"><div class="food-img">🌱</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">वेज पिज्जा <span>Veg Pizza</span></div><span class="price">₹170</span><button class="add-btn" onclick="addToCart('Veg Pizza (वेज पिज्जा)', 170)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🧅</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">ऑनियन पिज्जा <span>Onion Pizza</span></div><span class="price">₹150</span><button class="add-btn" onclick="addToCart('Onion Pizza (ऑनियन पिज्जा)', 150)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🍅</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">टूमेंटो पिज्जा <span>Tomato Pizza</span></div><span class="price">₹190</span><button class="add-btn" onclick="addToCart('Tomato Pizza (टूमेंटो पिज्जा)', 190)">Add</button></div></div>
+        
+        <div class="sub-category">Premium & Cheese Pizzas / प्रीमियम और चीज पिज्जा</div>
+        <div class="food-card"><div class="food-img">🧀</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पनीर चीज पिज्जा <span>Paneer Cheese Pizza</span></div><span class="price">₹230</span><button class="add-btn" onclick="addToCart('Paneer Cheese Pizza (पनीर चीज पिज्जा)', 230)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🫑</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">ऑनियन कैप्सिकम पिज्जा <span>Onion Capsicum Pizza</span></div><span class="price">₹200</span><button class="add-btn" onclick="addToCart('Onion Capsicum Pizza (ऑनियन कैप्सिकम पिज्जा)', 200)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🌽</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">बेबी कॉर्न पिज्जा <span>Baby Corn Pizza</span></div><span class="price">₹210</span><button class="add-btn" onclick="addToCart('Baby Corn Pizza (बेबी कॉर्न पिज्जा)', 210)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🌶️</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मसाला पिज्जा <span>Masala Pizza</span></div><span class="price">₹200</span><button class="add-btn" onclick="addToCart('Masala Pizza (मसाला पिज्जा)', 200)">Add</button></div></div>
+        
+        <div class="sub-category">Special Pizza & Extras / स्पेशल पिज्जा</div>
+        <div class="food-card"><div class="food-img">🦚</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मोरपंख पिज्जा <span>Morpankh Pizza</span></div><span class="price">₹350</span><button class="add-btn" onclick="addToCart('Morpankh Pizza (मोरपंख पिज्जा)', 350)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">➕</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">एक्स्ट्रा चीज <span>Extra Cheese</span></div><span class="price">₹70</span><button class="add-btn" onclick="addToCart('Extra Cheese (एक्स्ट्रा चीज)', 70)">Add</button></div></div>
 
-        <!-- CATEGORY: SANDWICH -->
-        <h2 class="category-title">🥪 Gourmet Sandwich</h2>
-        <div class="food-card">
-            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=300" class="food-img">
-            <div class="food-info">
-                <span class="veg-badge">● VEG</span>
-                <h3>Veg Sandwich</h3>
-                <p class="desc">Fresh cucumber, tomatoes, mint chutney & butter toast.</p>
-                <span class="price">₹60</span>
-                <button class="add-btn" onclick="addToCart('Veg Sandwich', 60)">Add</button>
-            </div>
-        </div>
 
-        <!-- CATEGORY: CHOWMEIN -->
-        <h2 class="category-title">🍜 Wok Noodles</h2>
-        <div class="food-card">
-            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=300" class="food-img">
-            <div class="food-info">
-                <span class="veg-badge">● VEG</span>
-                <h3>Veg Chowmein</h3>
-                <p class="desc">Stir-fried noodles with crunchy fresh garden vegetables.</p>
-                <span class="price">₹70</span>
-                <button class="add-btn" onclick="addToCart('Veg Chowmein', 70)">Add</button>
-            </div>
-        </div>
+        <!-- MAIN CATEGORY: BURGER HUB -->
+        <div class="main-category">🍔 BURGER HUB / बर्गर हब</div>
+        
+        <div class="sub-category">All Burgers / सभी बर्गर</div>
+        <div class="food-card"><div class="food-img">🍔</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">वेज बर्गर <span>Veg Burger</span></div><span class="price">₹50</span><button class="add-btn" onclick="addToCart('Veg Burger (वेज बर्गर)', 50)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🧀</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">चीज बर्गर <span>Cheese Burger</span></div><span class="price">₹80</span><button class="add-btn" onclick="addToCart('Cheese Burger (चीज बर्गर)', 80)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">👑</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पनीर चीज बर्गर <span>Paneer Cheese Burger</span></div><span class="price">₹100</span><button class="add-btn" onclick="addToCart('Paneer Cheese Burger (पनीर चीज बर्गर)', 100)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🌶️</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मसाला बर्गर <span>Masala Burger</span></div><span class="price">₹70</span><button class="add-btn" onclick="addToCart('Masala Burger (मसाला बर्गर)', 70)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">💥</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">डबल टिक्की बर्गर <span>Double Tikki Burger</span></div><span class="price">₹150</span><button class="add-btn" onclick="addToCart('Double Tikki Burger (डबल टिक्की बर्गर)', 150)">Add</button></div></div>
+
+
+        <!-- MAIN CATEGORY: SANDWICH CORNER -->
+        <div class="main-category">🥪 SANDWICH CORNER / सैंडविच कॉर्नर</div>
+        
+        <div class="sub-category">Veg & Cheese / वेज और चीज</div>
+        <div class="food-card"><div class="food-img">🥪</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">वेज सैंडविच <span>Veg Sandwich</span></div><span class="price">₹100</span><button class="add-btn" onclick="addToCart('Veg Sandwich (वेज सैंडविच)', 100)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🧀</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">चीज सैंडविच <span>Cheese Sandwich</span></div><span class="price">₹120</span><button class="add-btn" onclick="addToCart('Cheese Sandwich (चीज सैंडविच)', 120)">Add</button></div></div>
+        
+        <div class="sub-category">Premium & Special / प्रीमियम और स्पेशल</div>
+        <div class="food-card"><div class="food-img">👑</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पनीर चीज सैंडविच <span>Paneer Cheese Sandwich</span></div><span class="price">₹140</span><button class="add-btn" onclick="addToCart('Paneer Cheese Sandwich (पनीर चीज सैंडविच)', 140)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🔥</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मसाला सैंडविच <span>Masala Sandwich</span></div><span class="price">₹100</span><button class="add-btn" onclick="addToCart('Masala Sandwich (मसाला सैंडविच)', 100)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🤩</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पनीर मसाला चीज सैंडविच <span>Paneer Masala Cheese Sandwich</span></div><span class="price">₹180</span><button class="add-btn" onclick="addToCart('Paneer Masala Cheese Sandwich', 180)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🍕</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पिज्जा सैंडविच <span>Pizza Sandwich</span></div><span class="price">₹180</span><button class="add-btn" onclick="addToCart('Pizza Sandwich (पिज्जा सैंडविच)', 180)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🍫</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">चॉकलेट सैंडविच <span>Chocolate Sandwich</span></div><span class="price">₹150</span><button class="add-btn" onclick="addToCart('Chocolate Sandwich (चॉकलेट सैंडविच)', 150)">Add</button></div></div>
+
+
+        <!-- MAIN CATEGORY: SIDES & FRIES -->
+        <div class="main-category">🍟 SIDES & FRIES / फ्रेंच फ्राई</div>
+        
+        <div class="sub-category">Classic Fries / क्लासिक फ्राई</div>
+        <div class="food-card"><div class="food-img">🍟</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">फ्रेंच फ्राई (Full) <span>French Fries (Full)</span></div><span class="price">₹80</span><button class="add-btn" onclick="addToCart('French Fries Full', 80)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🍿</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">फ्रेंच फ्राई (Haff) <span>French Fries (Half)</span></div><span class="price">₹60</span><button class="add-btn" onclick="addToCart('French Fries Half', 60)">Add</button></div></div>
+        
+        <div class="sub-category">Spicy Masala Fries / मसाला फ्राई</div>
+        <div class="food-card"><div class="food-img">🌶️</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मसाला फ्रेंच फ्राई (Full) <span>Masala French Fries (Full)</span></div><span class="price">₹120</span><button class="add-btn" onclick="addToCart('Masala French Fries Full', 120)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">⚡</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मसाला फ्रेंच फ्राई (Haff) <span>Masala French Fries (Half)</span></div><span class="price">₹80</span><button class="add-btn" onclick="addToCart('Masala French Fries Half', 80)">Add</button></div></div>
+
+
+        <!-- MAIN CATEGORY: PAV BHAJI CHOWK -->
+        <div class="main-category">🍞 PAV BHAJI / पावभाजी</div>
+        
+        <div class="sub-category">Pav Bhaji Plates / पावभाजी प्लेट</div>
+        <div class="food-card"><div class="food-img">🍛</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पावभाजी <span>Pav Bhaji</span></div><span class="price">₹80</span><button class="add-btn" onclick="addToCart('Pav Bhaji (पावभाजी)', 80)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🔥</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मसाला पावभाजी <span>Masala Pav Bhaji</span></div><span class="price">₹100</span><button class="add-btn" onclick="addToCart('Masala Pav Bhaji', 100)">Add</button></div></div>
+        
+        <div class="sub-category">Extra Sides / एक्स्ट्रा साइड्स</div>
+        <div class="food-card"><div class="food-img">🍞</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">एक्स्ट्रा पाव <span>Extra Pav</span></div><span class="price">₹20</span><button class="add-btn" onclick="addToCart('Extra Pav (एक्स्ट्रा पाव)', 20)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🥣</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">एक्स्ट्रा भाजी <span>Extra Bhaji</span></div><span class="price">₹30</span><button class="add-btn" onclick="addToCart('Extra Bhaji (एक्स्ट्रा भाजी)', 30)">Add</button></div></div>
+
+
+        <!-- MAIN CATEGORY: CHINESE CHOWMEIN -->
+        <div class="main-category"> Noodles & Chowmein / चाऊमीन</div>
+        
+        <div class="sub-category">Classic & Garlic / क्लासिक और गारलिक</div>
+        <div class="food-card"><div class="food-img">🍜</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">वेज चाऊमीन <span>Veg Chowmein</span></div><span class="price">₹60</span><button class="add-btn" onclick="addToCart('Veg Chowmein (वेज चाऊमीन)', 60)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🧄</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">गारलिक चाऊमीन <span>Garlic Chowmein</span></div><span class="price">₹80</span><button class="add-btn" onclick="addToCart('Garlic Chowmein (गारलिक चाऊमीन)', 80)">Add</button></div></div>
+        
+        <div class="sub-category">Premium & Special Noodles / स्पेशल नूडल्स</div>
+        <div class="food-card"><div class="food-img">🔥</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">सहजवान चाऊमीन <span>Schezwan Chowmein</span></div><span class="price">₹90</span><button class="add-btn" onclick="addToCart('Schezwan Chowmein', 90)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🧀</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पनीर चाऊमीन <span>Paneer Chowmein</span></div><span class="price">₹100</span><button class="add-btn" onclick="addToCart('Paneer Chowmein (पनीर चाऊमीन)', 100)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🍱</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">चाऊमीन मन्चुरियन <span>Chowmein Manchurian</span></div><span class="price">₹100</span><button class="add-btn" onclick="addToCart('Chowmein Manchurian', 100)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🦚</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मोरपंख चाऊमीन <span>Morpankh Chowmein</span></div><span class="price">₹150</span><button class="add-btn" onclick="addToCart('Morpankh Chowmein', 150)">Add</button></div></div>
+
+
+        <!-- MAIN CATEGORY: MANCHURIAN DHAMAAL -->
+        <div class="main-category">🧆 MANCHURIAN / मन्चुरियन</div>
+        
+        <div class="sub-category">All Manchurian / सभी मन्चुरियन</div>
+        <div class="food-card"><div class="food-img">🧆</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">ड्राई मन्चुरियन <span>Dry Manchurian</span></div><span class="price">₹90</span><button class="add-btn" onclick="addToCart('Dry Manchurian (ड्राई मन्चुरियन)', 90)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🥣</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">ग्रेवी मन्चुरियन <span>Gravy Manchurian</span></div><span class="price">₹110</span><button class="add-btn" onclick="addToCart('Gravy Manchurian (ग्रेवी मन्चुरियन)', 110)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🧀</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पनीर मन्चुरियन <span>Paneer Manchurian</span></div><span class="price">₹150</span><button class="add-btn" onclick="addToCart('Paneer Manchurian (पनीर मन्चुरियन)', 150)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🍜</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मन्चुरियन चाऊमीन <span>Manchurian Chowmein</span></div><span class="price">₹100</span><button class="add-btn" onclick="addToCart('Manchurian Chowmein', 100)">Add</button></div></div>
+
+
+        <!-- MAIN CATEGORY: SOUTH INDIAN DOSA -->
+        <div class="main-category">🥞 SOUTH INDIAN DOSA / डोसा</div>
+        
+        <div class="sub-category">Classic Dosas / क्लासिक डोसा</div>
+        <div class="food-card"><div class="food-img">🥞</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">प्लेन डोसा <span>Plain Dosa</span></div><span class="price">₹80</span><button class="add-btn" onclick="addToCart('Plain Dosa (प्लेन डोसा)', 80)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🌯</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मसाला डोसा <span>Masala Dosa</span></div><span class="price">₹100</span><button class="add-btn" onclick="addToCart('Masala Dosa (मसाला डोसा)', 100)">Add</button></div></div>
+        
+        <div class="sub-category">Premium & Fusion Dosas / प्रीमियम डोसा</div>
+        <div class="food-card"><div class="food-img">🧀</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">चीज मसाला डोसा <span>Cheese Masala Dosa</span></div><span class="price">₹140</span><button class="add-btn" onclick="addToCart('Cheese Masala Dosa', 140)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">👑</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पनीर मसाला डोसा <span>Paneer Masala Dosa</span></div><span class="price">₹130</span><button class="add-btn" onclick="addToCart('Paneer Masala Dosa', 130)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🍕</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">पिज्जा डोसा <span>Pizza Dosa</span></div><span class="price">₹200</span><button class="add-btn" onclick="addToCart('Pizza Dosa (पिज्जा डोसा)', 200)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🎵</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">सरगम डोसा <span>Sargam Dosa</span></div><span class="price">₹250</span><button class="add-btn" onclick="addToCart('Sargam Dosa (सरगम डोसा)', 250)">Add</button></div></div>
+        <div class="food-card"><div class="food-img">🦚</div><div class="food-info"><span class="veg-badge">● VEG</span><div class="food-title-combo">मोरपंख डोसा <span>Morpankh Dosa</span></div><span class="price">₹399</span><button class="add-btn" onclick="addToCart('Morpankh Dosa (मोरपंख डोसा)', 399)">Add</button></div></div>
     </div>
 
     <div id="toast" class="toast">Item added to cart!</div>
@@ -198,7 +276,7 @@
             document.getElementById('cart-total').innerText = total;
             
             const toast = document.getElementById('toast');
-            toast.innerText = `🛒 ${name} added successfully!`;
+            toast.innerText = `🛒 ${name} added!`;
             toast.classList.add('show');
             setTimeout(() => { toast.classList.remove('show'); }, 2000);
         }
