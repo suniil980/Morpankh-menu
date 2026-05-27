@@ -16,10 +16,10 @@
         /* Service Box */
         .service-box { background: linear-gradient(135deg, #1e1e1e, #151515); padding: 20px 15px; border-radius: 16px; text-align: center; margin-bottom: 25px; border: 1px solid rgba(212, 183, 55, 0.5); }
         .service-box h2 { font-family: 'Cinzel', serif; color: #d4af37; font-size: 16px; margin-bottom: 12px; }
-        .service-options { display: flex; justify-content: center; gap: 15px; margin-bottom: 12px; }
+        .service-options { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
         .service-lbl { background: #252525; padding: 10px 18px; border-radius: 10px; font-size: 13px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 8px; }
         .service-lbl:has(input:checked) { background: rgba(212, 183, 55, 0.15); border-color: #d4af37; color: #d4af37; }
-        .input-field { width: 100%; max-width: 280px; padding: 8px 12px; background: #252525; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; text-align: center; margin-top: 5px; display: none; }
+        .input-field { width: 100%; max-width: 320px; padding: 10px 12px; background: #252525; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; text-align: center; margin: 8px auto 0 auto; display: block; font-size: 14px; }
         
         /* Clickable Category Button */
         .main-category { 
@@ -66,13 +66,18 @@
     <div class="container">
         <!-- Order Type Selection -->
         <div class="service-box">
-            <h2>🍽️ Order Type</h2>
+            <h2>🍽️ Order Details</h2>
+            
+            <!-- Customer Name Input (Always Visible) -->
+            <input type="text" id="custName" class="input-field" placeholder="अपना नाम डालें (Your Name)" required style="margin-bottom: 12px; border-color: rgba(212, 183, 55, 0.4);">
+            
             <div class="service-options">
                 <label class="service-lbl"><input type="radio" name="type" onclick="show('dine')" checked> Dine-In</label>
                 <label class="service-lbl"><input type="radio" name="type" onclick="show('del')"> Delivery</label>
             </div>
+            
             <input type="number" id="dine" class="input-field" placeholder="Table Number" style="display:block">
-            <input type="text" id="del" class="input-field" placeholder="Delivery Address">
+            <input type="text" id="del" class="input-field" placeholder="Delivery Address" style="display:none">
         </div>
 
         <!-- 1. PIZZA -->
@@ -171,7 +176,6 @@
     <script>
         let cart = [], total = 0;
 
-        // Categories hide/show karne ka sahi script
         function toggleCategory(element) {
             element.classList.toggle("active");
             let content = element.nextElementSibling;
@@ -195,10 +199,15 @@
         }
 
         function order() { 
+            let name = document.getElementById('custName').value.trim();
+            if(!name) { alert("Kripya pehle apna Naam dalein!"); return; }
             if(cart.length === 0) { alert("Kripya item add karein!"); return; }
+            
             let type = document.getElementById('dine').style.display === 'block' ? 'Dine-In' : 'Delivery';
             let detail = type === 'Dine-In' ? 'Table: ' + document.getElementById('dine').value : 'Address: ' + document.getElementById('del').value;
-            let msg = `*Morpankh New Order*\nType: ${type}\n${detail}\nItems: ${cart.join(", ")}\n*Total: ₹${total}*`;
+            
+            // Morpankh Cafe ka permanent WhatsApp నంబర్ set kiya hai
+            let msg = `*Morpankh New Order*\nCustomer Name: ${name}\nType: ${type}\n${detail}\nItems: ${cart.join(", ")}\n*Total: ₹${total}*`;
             window.open("https://wa.me/917014808515?text=" + encodeURIComponent(msg)); 
         }
     </script>
