@@ -1,87 +1,567 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morpankh Cafe & Restro</title>
-    <style>
-        body { background-color: #121212; color: #fff; font-family: sans-serif; padding: 20px; margin-bottom: 100px; }
-        .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #d4af37; padding-bottom: 10px; }
-        .service-box { background: #1e1e1e; padding: 15px; border-radius: 8px; border: 1px solid #d4af37; margin-bottom: 20px; }
-        .input-field { width: 100%; padding: 10px; margin: 5px 0; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; box-sizing: border-box; }
-        .main-category { background: #d4af37; color: #000; padding: 15px; margin: 10px 0; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
-        .category-content { display: none; padding: 10px; background: #1e1e1e; border-radius: 8px; margin-bottom: 10px; }
-        .food-card { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #333; }
-        .add-btn { background: #d4af37; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; box-sizing: border-box; }
-        .insta-link { color: #d4af37; text-decoration: none; font-weight: bold; display: block; margin-top: 10px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morpankh Cafe & Restro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+padding:15px;
+padding-bottom:120px;
+}
+
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#d4af3720,#000000);
+z-index:-1;
+}
+
+.header{
+background:linear-gradient(145deg,#1f1f1f,#111);
+padding:25px 20px;
+border-radius:22px;
+text-align:center;
+border:1px solid #d4af37;
+box-shadow:0 0 25px rgba(212,175,55,0.25);
+margin-bottom:20px;
+}
+
+.logo{
+width:90px;
+height:90px;
+border-radius:50%;
+background:#d4af37;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+margin:auto;
+margin-bottom:15px;
+color:black;
+font-weight:bold;
+}
+
+.header h1{
+font-size:30px;
+color:#d4af37;
+margin-bottom:8px;
+}
+
+.tagline{
+font-size:14px;
+color:#ccc;
+margin-bottom:15px;
+}
+
+.info{
+font-size:14px;
+line-height:26px;
+color:#eee;
+}
+
+.socials{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-top:18px;
+flex-wrap:wrap;
+}
+
+.social-btn{
+background:#d4af37;
+color:black;
+padding:10px 18px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+font-size:14px;
+}
+
+.service-box{
+background:#1b1b1b;
+padding:18px;
+border-radius:20px;
+border:1px solid #2f2f2f;
+margin-bottom:20px;
+}
+
+.service-title{
+font-size:18px;
+font-weight:600;
+margin-bottom:15px;
+color:#d4af37;
+}
+
+.input-field{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+background:#2a2a2a;
+margin-top:12px;
+color:white;
+font-size:15px;
+outline:none;
+}
+
+.type-box{
+display:flex;
+gap:10px;
+margin-top:15px;
+flex-wrap:wrap;
+}
+
+.type-btn{
+flex:1;
+padding:12px;
+background:#222;
+text-align:center;
+border-radius:14px;
+border:1px solid #444;
+cursor:pointer;
+}
+
+.type-btn.active{
+background:#d4af37;
+color:black;
+font-weight:600;
+}
+
+.main-category{
+background:linear-gradient(145deg,#d4af37,#f5d76e);
+color:black;
+padding:16px 18px;
+border-radius:18px;
+margin-top:15px;
+font-weight:700;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+font-size:16px;
+box-shadow:0 5px 12px rgba(212,175,55,0.2);
+}
+
+.category-content{
+display:none;
+background:#1a1a1a;
+padding:10px 15px;
+border-radius:18px;
+margin-top:8px;
+}
+
+.food-card{
+background:#232323;
+padding:15px;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-top:10px;
+gap:10px;
+}
+
+.food-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.food-icon{
+font-size:26px;
+}
+
+.food-name{
+font-size:15px;
+font-weight:500;
+}
+
+.food-price{
+color:#d4af37;
+font-size:14px;
+margin-top:4px;
+}
+
+.add-btn{
+background:#d4af37;
+color:black;
+border:none;
+padding:10px 15px;
+border-radius:12px;
+font-weight:700;
+cursor:pointer;
+}
+
+.cart-bar{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#121212;
+border-top:2px solid #d4af37;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 -5px 20px rgba(0,0,0,0.5);
+}
+
+.bill-box{
+font-size:17px;
+font-weight:700;
+}
+
+.bill-box span{
+color:#d4af37;
+}
+
+.order-btn{
+background:linear-gradient(145deg,#d4af37,#f5d76e);
+color:black;
+border:none;
+padding:13px 20px;
+border-radius:15px;
+font-size:15px;
+font-weight:700;
+cursor:pointer;
+}
+
+.cart-popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90%;
+max-width:400px;
+background:#1a1a1a;
+padding:20px;
+border-radius:20px;
+border:1px solid #d4af37;
+display:none;
+z-index:1000;
+}
+
+.popup-title{
+font-size:22px;
+margin-bottom:15px;
+color:#d4af37;
+text-align:center;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid #333;
+}
+
+.close-btn{
+width:100%;
+margin-top:15px;
+padding:12px;
+border:none;
+background:#d4af37;
+color:black;
+border-radius:12px;
+font-weight:700;
+}
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+z-index:999;
+}
+
+</style>
 </head>
 <body>
 
 <div class="header">
-    <h2>MORPANKH CAFE & RESTRO</h2>
-    <p style="font-size: 14px;">Owner: Kishan Asopa | 7014808515, 9928427598<br>Karant Balaji Market, 1st Floor, Girls School ke samne, Napasar, Bikaner</p>
-    <!-- Yahan apni link daalein -->
-    <a href="https://www.instagram.com/AAPKI_ID/" target="_blank" class="insta-link">📸 Instagram par humein follow karein</a>
+
+<div class="logo">🦚</div>
+
+<h1>MORPANKH</h1>
+
+<div class="tagline">
+Taste • Vibes • Quality
+</div>
+
+<div class="info">
+👑 Owner: Kishan Asopa<br>
+📞 7014808515 | 9928427598<br>
+📍 Karant Balaji Market, 1st Floor,<br>
+Girls School ke Samne, Napasar, Bikaner
+</div>
+
+<div class="socials">
+<a href="#" class="social-btn">📸 Instagram</a>
+<a href="#" class="social-btn">📍 Location</a>
+</div>
+
 </div>
 
 <div class="service-box">
-    <input type="text" id="custName" class="input-field" placeholder="अपना नाम लिखें">
-    <label><input type="radio" name="type" onclick="document.getElementById('dine').style.display='block'; document.getElementById('del').style.display='none';" checked> टेबल पर खाना</label>
-    <label style="margin-left:10px;"><input type="radio" name="type" onclick="document.getElementById('dine').style.display='none'; document.getElementById('del').style.display='block';"> होम डिलीवरी</label>
-    <input type="text" id="dine" class="input-field" placeholder="टेबल नंबर लिखें">
-    <input type="text" id="del" class="input-field" placeholder="अपना पूरा पता लिखें" style="display:none">
+
+<div class="service-title">
+📝 Customer Details
+</div>
+
+<input type="text" id="custName" class="input-field" placeholder="अपना नाम लिखें">
+
+<div class="type-box">
+<div class="type-btn active" onclick="setType('dine',this)">
+🍽️ Dine In
+</div>
+
+<div class="type-btn" onclick="setType('delivery',this)">
+🛵 Home Delivery
+</div>
+</div>
+
+<input type="text" id="dine" class="input-field" placeholder="टेबल नंबर लिखें">
+
+<input type="text" id="delivery" class="input-field" placeholder="पूरा पता लिखें" style="display:none;">
+
 </div>
 
 <div id="menu-container"></div>
 
-<div class="cart-bar">
-    <div>Total Bill: ₹<span id="total">0</span></div>
-    <button class="btn" style="background:#d4af37; width:90%; margin-top:10px; padding: 10px;" onclick="order()">WhatsApp पर ऑर्डर भेजें</button>
+<div class="overlay" id="overlay"></div>
+
+<div class="cart-popup" id="cartPopup">
+<div class="popup-title">🛒 Your Cart</div>
+<div id="cartItems"></div>
+<button class="close-btn" onclick="closeCart()">Close</button>
 </div>
+
+<div class="cart-bar">
+
+<div class="bill-box">
+Total: ₹<span id="total">0</span>
+</div>
+
+<div style="display:flex; gap:10px;">
+<button class="order-btn" onclick="showCart()">
+Cart
+</button>
+
+<button class="order-btn" onclick="orderNow()">
+Order Now
+</button>
+</div>
+
+</div>
+
 <script>
-    const menu = {
-        "🌯 Roll": {"Veg Roll": 100, "Frankie Roll": 120},
-        "🥟 Momos": {"Steam Momos": 100, "Fried Momos": 120},
-        "🥗 Chat": {"Kurkure Masala Chat": 49, "Lesh Cocktail Bhel": 79, "Chips Masala Kurkure Chat": 89},
-        "🍕 पिज्जा": {"Veg Pizza": 170, "Onion Pizza": 150, "Paneer Cheese Pizza": 230, "Onion Capsicum Pizza": 200, "Baby Corn Pizza": 210, "Masala Pizza": 200, "Tomato Pizza": 190, "Morpankh Pizza": 350, "Extra Cheese": 70},
-        "🍔 बर्गर": {"Veg Burger": 50, "Paneer Cheese Burger": 100, "Cheese Burger": 80, "Masala Burger": 70, "Double Tikki Burger": 150},
-        "🥪 सैंडविच": {"Veg Sandwich": 100, "Cheese Sandwich": 120, "Paneer Cheese Sandwich": 140, "Chocolate Sandwich": 150, "Masala Sandwich": 100, "Paneer Masala Cheese Sandwich": 180, "Pizza Sandwich": 180},
-        "🍟 फ्रेंच फ्राई": {"French Fries (Full)": 80, "French Fries (Half)": 60, "Masala French Fries (Full)": 120, "Masala French Fries (Half)": 80},
-        "🍞 पावभाजी": {"Masala Pav Bhaji": 100, "Pav Bhaji": 80, "Extra Pav": 20, "Extra Bhaji": 30},
-        "🍜 चाऊमीन": {"Veg Chowmein": 60, "Garlic Chowmein": 80, "Schezwan Chowmein": 90, "Paneer Chowmein": 100, "Chowmein Manchurian": 100, "Morpankh Chowmein": 150},
-        "🧆 मन्चुरियन": {"Dry Manchurian": 90, "Gravy Manchurian": 110, "Paneer Manchurian": 150, "Manchurian Chowmein": 100},
-        "🥞 डोसा": {"Masala Dosa": 100, "Plain Dosa": 80, "Paneer Masala Dosa": 130, "Cheese Masala Dosa": 140, "Pizza Dosa": 200, "Sargam Dosa": 250, "Morpankh Dosa": 399}
-    };
 
-let cart = {};
-    const container = document.getElementById('menu-container');
+const menu={
 
-    for (let cat in menu) {
-        let catId = cat.replace(/ /g, '_');
-        container.innerHTML += `<div class="main-category" onclick="document.getElementById('${catId}').style.display = document.getElementById('${catId}').style.display==='block'?'none':'block'">${cat} <span>▼</span></div><div class="category-content" id="${catId}"></div>`;
-        for (let item in menu[cat]) {
-            document.getElementById(catId).innerHTML += `<div class="food-card">${item} <span>₹${menu[cat][item]}</span> <div class="btn-group"><button class="btn" style="background:#ff4444" onclick="update('${item}', -${menu[cat][item]})">-</button><button class="btn" style="background:#d4af37" onclick="update('${item}', ${menu[cat][item]})">+</button></div></div>`;
-        }
-    }
+"🍕 Pizza":{
+"Veg Pizza":170,
+"Paneer Cheese Pizza":230,
+"Morpankh Special Pizza":350
+},
 
-    function update(item, price) {
-        if (!cart[item]) cart[item] = { qty: 0, price: Math.abs(price) };
-        cart[item].qty += (price > 0 ? 1 : -1);
-        if (cart[item].qty < 0) cart[item].qty = 0;
-        let total = 0;
-        for (let i in cart) total += (cart[i].qty * cart[i].price);
-        document.getElementById('total').innerText = total;
-    }
+"🍔 Burger":{
+"Veg Burger":50,
+"Cheese Burger":80,
+"Double Tikki Burger":150
+},
 
-    function order() {
-        let total = document.getElementById('total').innerText;
-        let msg = "Morpankh Order Details:%0A";
-        for (let i in cart) if(cart[i].qty > 0) msg += `${i} x ${cart[i].qty}%0A`;
-        msg += `Total Bill: ₹${total}`;
-        window.open("https://wa.me/917014808515?text=" + msg);
-    }
+"🥞 Dosa":{
+"Masala Dosa":100,
+"Plain Dosa":80,
+"Morpankh Dosa":399
+},
+
+"🥟 Momos":{
+"Steam Momos":100,
+"Fried Momos":120
+},
+
+"🍟 Fries":{
+"French Fries":80,
+"Masala Fries":120
+}
+
+};
+
+let total=0;
+let cart={};
+let serviceType='dine';
+
+const container=document.getElementById('menu-container');
+
+for(let category in menu){
+
+let id=category.replace(/[^a-zA-Z0-9]/g,'');
+
+container.innerHTML+=`
+<div class="main-category" onclick="toggleMenu('${id}')">
+${category}
+<span>▼</span>
+</div>
+
+<div class="category-content" id="${id}"></div>
+`;
+
+for(let item in menu[category]){
+
+document.getElementById(id).innerHTML+=`
+
+<div class="food-card">
+
+<div class="food-left">
+<div class="food-icon">🍽️</div>
+
+<div>
+<div class="food-name">${item}</div>
+<div class="food-price">₹${menu[category][item]}</div>
+</div>
+</div>
+
+<button class="add-btn"
+onclick="addItem('${item}',${menu[category][item]})">
+ADD
+</button>
+
+</div>
+`;
+}
+}
+
+function toggleMenu(id){
+
+let box=document.getElementById(id);
+
+if(box.style.display==='block'){
+box.style.display='none';
+}else{
+box.style.display='block';
+}
+}
+
+function setType(type,element){
+
+serviceType=type;
+
+let buttons=document.querySelectorAll('.type-btn');
+buttons.forEach(btn=>btn.classList.remove('active'));
+
+element.classList.add('active');
+
+if(type==='dine'){
+document.getElementById('dine').style.display='block';
+document.getElementById('delivery').style.display='none';
+}else{
+document.getElementById('dine').style.display='none';
+document.getElementById('delivery').style.display='block';
+}
+}
+
+function addItem(name,price){
+
+if(cart[name]){
+cart[name].qty+=1;
+}else{
+cart[name]={qty:1,price:price};
+}
+
+total+=price;
+
+document.getElementById('total').innerText=total;
+}
+
+function showCart(){
+
+let cartBox=document.getElementById('cartItems');
+cartBox.innerHTML='';
+
+for(let item in cart){
+cartBox.innerHTML+=`
+<div class="cart-item">
+<span>${item} x ${cart[item].qty}</span>
+<span>₹${cart[item].qty*cart[item].price}</span>
+</div>
+`;
+}
+
+cartBox.innerHTML+=`
+<div style="margin-top:15px; font-weight:bold; text-align:right; color:#d4af37;">
+Total: ₹${total}
+</div>
+`;
+
+document.getElementById('cartPopup').style.display='block';
+document.getElementById('overlay').style.display='block';
+}
+
+function closeCart(){
+document.getElementById('cartPopup').style.display='none';
+document.getElementById('overlay').style.display='none';
+}
+
+function orderNow(){
+
+let name=document.getElementById('custName').value;
+
+if(name===''){
+alert('पहले अपना नाम लिखें');
+return;
+}
+
+let details='';
+
+if(serviceType==='dine'){
+details=document.getElementById('dine').value;
+}else{
+details=document.getElementById('delivery').value;
+}
+
+let msg=`*🦚 MORPANKH CAFE ORDER*\n\n`;
+
+msg+=`👤 Name: ${name}\n`;
+msg+=`📦 Service: ${serviceType}\n`;
+msg+=`📍 Details: ${details}\n\n`;
+
+msg+=`-------------------\n`;
+
+for(let item in cart){
+msg+=`${item} x ${cart[item].qty}\n`;
+}
+
+msg+=`-------------------\n`;
+msg+=`💰 Total Bill: ₹${total}`;
+
+window.open(
+'https://wa.me/917014808515?text='+encodeURIComponent(msg),
+'_blank'
+);
+}
+
 </script>
 
 </body>
