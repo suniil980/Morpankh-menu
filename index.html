@@ -3,37 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morpankh Cafe & Restro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Morpankh Cafe & Restro - Menu</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background-color: #121212; color: #fff; padding-bottom: 100px; }
-        .header { text-align: center; padding: 20px; border-bottom: 2px solid #d4af37; }
-        .container { max-width: 500px; margin: 20px auto; padding: 15px; }
-        .input-box { width: 100%; padding: 12px; margin-bottom: 10px; background: #222; border: 1px solid #444; color: white; border-radius: 8px; }
-        .item { background: #1e1e1e; padding: 15px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; }
-        .btn { background: #d4af37; color: #000; padding: 8px 15px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
-        .footer-bar { position: fixed; bottom: 0; width: 100%; max-width: 500px; left: 50%; transform: translateX(-50%); background: #000; padding: 15px; border-top: 2px solid #d4af37; text-align: center; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #121212; color: #fff; padding-bottom: 120px; }
+        header { background: #1a1a1a; padding: 25px; text-align: center; border-bottom: 3px solid #d4af37; }
+        .container { max-width: 500px; margin: 20px auto; padding: 10px; }
+        .input-group { margin-bottom: 15px; }
+        .input-group input { width: 100%; padding: 12px; border-radius: 5px; border: none; background: #222; color: white; }
+        .category { background: #d4af37; color: #000; padding: 10px; margin-top: 20px; font-weight: bold; border-radius: 5px; }
+        .item { background: #1e1e1e; padding: 12px; margin-top: 8px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; }
+        .add-btn { background: #d4af37; color: #000; border: none; padding: 6px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .footer { position: fixed; bottom: 0; width: 100%; max-width: 500px; background: #000; padding: 15px; border-top: 2px solid #d4af37; text-align: center; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Morpankh Cafe & Restro</h1>
-        <p>Owner: Kishan Asopa | 7014808515</p>
-    </div>
-
+    <header><h1>Morpankh Cafe & Restro</h1></header>
     <div class="container">
-        <input type="text" id="custName" class="input-box" placeholder="अपना नाम लिखें">
-        <input type="text" id="address" class="input-box" placeholder="पता या टेबल नंबर">
-        
-        <div class="item">Veg Pizza (₹170) <button class="btn" onclick="add('Veg Pizza', 170)">Add</button></div>
-        <div class="item">Veg Burger (₹50) <button class="btn" onclick="add('Veg Burger', 50)">Add</button></div>
-        <div class="item">Veg Chowmein (₹60) <button class="btn" onclick="add('Veg Chowmein', 60)">Add</button></div>
+        <div class="input-group"><input type="text" id="custName" placeholder="अपना नाम लिखें"></div>
+        <div class="input-group"><input type="text" id="address" placeholder="टेबल नंबर या पता"></div>
+
+        <div class="category">PIZZA</div>
+        <div class="item">Veg Pizza - ₹170 <button class="add-btn" onclick="add('Veg Pizza', 170)">Add</button></div>
+        <div class="item">Onion Pizza - ₹150 <button class="add-btn" onclick="add('Onion Pizza', 150)">Add</button></div>
+        <div class="item">Paneer Pizza - ₹230 <button class="add-btn" onclick="add('Paneer Pizza', 230)">Add</button></div>
+
+        <div class="category">BURGER</div>
+        <div class="item">Veg Burger - ₹50 <button class="add-btn" onclick="add('Veg Burger', 50)">Add</button></div>
+        <div class="item">Cheese Burger - ₹80 <button class="add-btn" onclick="add('Cheese Burger', 80)">Add</button></div>
+
+        <div class="category">SNACKS</div>
+        <div class="item">Veg Chowmein - ₹60 <button class="add-btn" onclick="add('Veg Chowmein', 60)">Add</button></div>
+        <div class="item">French Fries - ₹90 <button class="add-btn" onclick="add('French Fries', 90)">Add</button></div>
     </div>
 
-    <div class="footer-bar">
+    <div class="footer">
         <p>Total Bill: ₹<span id="total">0</span></p>
-        <button class="btn" style="width:100%; margin-top:10px;" onclick="sendOrder()">Place Order (WhatsApp)</button>
+        <button class="add-btn" style="width:100%; margin-top:10px; padding:12px;" onclick="sendOrder()">Place Order (WhatsApp)</button>
     </div>
 
     <script>
@@ -42,8 +48,8 @@
         function sendOrder() {
             let name = document.getElementById('custName').value;
             let addr = document.getElementById('address').value;
-            if(!name || items.length == 0) { alert("Naam aur item select karein!"); return; }
-            let msg = `Order: ${items.join(", ")}%0ATotal: ₹${total}%0AName: ${name}%0ADetails: ${addr}`;
+            if(!name || items.length === 0) { alert("Naam aur item select karein!"); return; }
+            let msg = `*NEW ORDER*%0AName: ${name}%0ADetails: ${addr}%0AItems: ${items.join(", ")}%0ATotal: ₹${total}`;
             window.location.href = "https://wa.me/917014808515?text=" + msg;
         }
     </script>
