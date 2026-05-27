@@ -36,7 +36,7 @@
 
 <div id="menu-container"></div>
 
-iv class="cart-bar">
+<div class="cart-bar">
     <div>Total Bill: ₹<span id="total">0</span></div>
     <button class="btn" style="background:#d4af37; width:90%; margin-top:10px; padding: 10px;" onclick="order()">WhatsApp पर ऑर्डर भेजें</button>
 </div>
@@ -55,45 +55,34 @@ iv class="cart-bar">
         "🥞 डोसा": {"Masala Dosa": 100, "Plain Dosa": 80, "Paneer Masala Dosa": 130, "Cheese Masala Dosa": 140, "Pizza Dosa": 200, "Sargam Dosa": 250, "Morpankh Dosa": 399}
     };
 
-    let cart = {}, total = 0;
+let cart = {};
+    const container = document.getElementById('menu-container');
 
-    function renderMenu() {
-        const container = document.getElementById('menu-container');
-        for (let cat in menu) {
-            container.innerHTML += `<div class="main-category" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display==='block'?'none':'block'">${cat} <span>▼</span></div><div class="category-content" id="${cat.replace(/ /g, '_')}"></div>`;
-            for (let item in menu[cat]) {
-                document.getElementById(cat.replace(/ /g, '_')).innerHTML += `<div class="food-card">${item} <span>₹${menu[cat][item]}</span> <div class="btn-group"><button class="sub-btn" onclick="update('${item}', ${menu[cat][item]}, -1)">-</button><button class="add-btn" onclick="update('${item}', ${menu[cat][item]}, 1)">+</button></div></div>`;
-            }
+    for (let cat in menu) {
+        let catId = cat.replace(/ /g, '_');
+        container.innerHTML += `<div class="main-category" onclick="document.getElementById('${catId}').style.display = document.getElementById('${catId}').style.display==='block'?'none':'block'">${cat} <span>▼</span></div><div class="category-content" id="${catId}"></div>`;
+        for (let item in menu[cat]) {
+            document.getElementById(catId).innerHTML += `<div class="food-card">${item} <span>₹${menu[cat][item]}</span> <div class="btn-group"><button class="btn" style="background:#ff4444" onclick="update('${item}', -${menu[cat][item]})">-</button><button class="btn" style="background:#d4af37" onclick="update('${item}', ${menu[cat][item]})">+</button></div></div>`;
         }
     }
 
-    function update(n, p, q) {
-        if (!cart[n]) cart[n] = 0;
-        cart[n] += q;
-        if (cart[n] < 0) cart[n] = 0;
-        total += (p * q);
-        if (total < 0) total = 0;
+    function update(item, price) {
+        if (!cart[item]) cart[item] = { qty: 0, price: Math.abs(price) };
+        cart[item].qty += (price > 0 ? 1 : -1);
+        if (cart[item].qty < 0) cart[item].qty = 0;
+        let total = 0;
+        for (let i in cart) total += (cart[i].qty * cart[i].price);
         document.getElementById('total').innerText = total;
-        updateCartDisplay();
-    }
-
-    function updateCartDisplay() {
-        let display = "";
-        for(let i in cart) if(cart[i] > 0) display += `${i}(${cart[i]}), `;
-        document.getElementById('cart-items').innerText = display || "Khali";
     }
 
     function order() {
-        let name = document.getElementById('custName').value;
-        let details = document.getElementById('dine').value;
-        if(!name) { alert("नाम लिखें!"); return; }
-        let msg = `*ORDER - Morpankh*%0A👤 ${name}%0A📍 ${details}%0A-------------------%0A`;
-        for(let i in cart) if(cart[i] > 0) msg += `${i} x ${cart[i]}%0A`;
-        msg += `-------------------%0A💰 Total: ₹${total}`;
+        let total = document.getElementById('total').innerText;
+        let msg = "Morpankh Order Details:%0A";
+        for (let i in cart) if(cart[i].qty > 0) msg += `${i} x ${cart[i].qty}%0A`;
+        msg += `Total Bill: ₹${total}`;
         window.open("https://wa.me/917014808515?text=" + msg);
     }
-
-    renderMenu();
 </script>
+
 </body>
 </html>
