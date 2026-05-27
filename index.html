@@ -58,15 +58,6 @@
         .cart-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: #1a1a1a; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #d4af37; border-radius: 20px 20px 0 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.5); z-index: 999; }
         .cart-text { font-size: 14px; color: #fff; }
         .order-btn { background: linear-gradient(135deg, #d4af37, #aa841b); color: #121212; padding: 10px 22px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer; }
-
-        /* Custom Popup Style for Number Selection */
-        .popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
-        .popup-box { background: #1e1e1e; padding: 25px; border-radius: 16px; max-width: 340px; width: 90%; text-align: center; border: 2px solid #d4af37; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .popup-box h3 { font-size: 16px; margin-bottom: 20px; color: #fff; }
-        .popup-btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; text-decoration: none; }
-        .btn-owner { background: linear-gradient(135deg, #aa841b, #d4af37); color: #121212; }
-        .btn-counter { background: #252525; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-        .btn-close { background: #7c1a1a; color: #fff; margin-top: 15px; font-size: 12px; padding: 8px; }
     </style>
 </head>
 <body>
@@ -75,14 +66,14 @@
         <h1>Morpankh Cafe & Restro</h1>
         <div class="owner-info">
             👤 <strong>Owner:</strong> Kishan Asopa <br>
-            📞 <strong>Call:</strong> +91 7014808515, +91 9549354020 <br>
-            📍 <strong>Address:</strong> Nokha Road, Bikaner, Rajasthan
+            📞 <strong>Call:</strong> 7014808515, 9928427598 <br>
+            📍 <strong>Address:</strong> Karant Balaji Market, Girls School ke samne, Napasar
         </div>
     </header>
     <div class="container">
         <!-- Order Type & Customer Details Selection -->
         <div class="service-box">
-            <h2>🍽️ Order Details /ऑर्डर की जानकारी</h2>
+            <h2>🍽️ Order Details / ऑर्डर की जानकारी</h2>
             
             <!-- Customer Name -->
             <input type="text" id="custName" class="input-field" placeholder="अपना नाम लिखें (Your Name)" required style="margin-bottom: 15px; border-color: rgba(212, 183, 55, 0.4);">
@@ -191,25 +182,14 @@
         </div>
     </div>
 
-    <!-- Popup Window for Number Selection -->
-    <div id="numberPopup" class="popup-overlay">
-        <div class="popup-box">
-            <h3>📋 Order Kiske Paas Bhejna Hai?</h3>
-            <button class="popup-btn btn-owner" onclick="sendTo('7014808515')">👤 Owner (Kishan Ji)</button>
-            <button class="popup-btn btn-counter" onclick="sendTo('9549354020')">🏪 Counter / Manager</button>
-            <button class="popup-btn btn-close" onclick="closePopup()">Cancel (बंद करें)</button>
-        </div>
-    </div>
-
     <!-- Bottom Fixed Bar -->
     <div class="cart-bar">
         <div class="cart-text">Total Items: <span id="count">0</span> | Bill: <span style="color:#d4af37; font-weight:bold;">₹<span id="total">0</span></span></div>
-        <button class="order-btn" onclick="openOrderPopup()">Place Order ➔</button>
+        <button class="order-btn" onclick="order()">Place Order ➔</button>
     </div>
 
     <script>
         let cart = {}, total = 0, itemCount = 0;
-        let finalMessage = "";
 
         function toggleCategory(element) {
             element.classList.toggle("active");
@@ -238,7 +218,7 @@
             document.getElementById('total').innerText = total; 
         }
 
-        function openOrderPopup() {
+        function order() { 
             let name = document.getElementById('custName').value.trim();
             if(!name) { alert("Kripya pehle apna Naam dalein!"); return; }
             if(itemCount === 0) { alert("Kripya item add karein!"); return; }
@@ -255,20 +235,14 @@
                 index++;
             }
             
-            // Format back to exactly what was required
-            finalMessage = `*🔴 NEW ORDER - MORPANKH CAFE & RESTRO*\n----------------------------------------\n👤 *Customer Name:* ${name}\n📌 Type: *${type}*\n🪑 ${detail}\n💳 *Payment Mode:* ${payMethod}\n----------------------------------------\n\n${itemsList.join("\n")}\n\n----------------------------------------\n💰 *TOTAL BILL: ₹${total}*\n----------------------------------------\n\nKripya order confirm karein! 🙏`;
+            let msg = `*🔴 NEW ORDER - MORPANKH CAFE & RESTRO*\n----------------------------------------\n👤 *Customer Name:* ${name}\n📌 Type: *${type}*\n🪑 ${detail}\n💳 *Payment Mode:* ${payMethod}\n----------------------------------------\n\n${itemsList.join("\n")}\n\n----------------------------------------\n💰 *TOTAL BILL: ₹${total}*\n----------------------------------------\n\nKripya order confirm karein! 🙏`;
             
-            // Open selection popup
-            document.getElementById('numberPopup').style.display = 'flex';
-        }
-
-        function sendTo(num) {
-            document.getElementById('numberPopup').style.display = 'none';
-            window.open("https://wa.me/91" + num + "?text=" + encodeURIComponent(finalMessage));
-        }
-
-        function closePopup() {
-            document.getElementById('numberPopup').style.display = 'none';
+            // Bina option puche dono numbers par ek saath background me message open karega
+            window.open("https://wa.me/917014808515?text=" + encodeURIComponent(msg));
+            window.open("https://wa.me/919928427598?text=" + encodeURIComponent(msg));
+            
+            // Customer ko confirmation dikhayega
+            alert("Order Confirmed! 👍\nAapka order humein mil gaya hai."); 
         }
     </script>
 </body>
