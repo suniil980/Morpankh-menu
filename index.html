@@ -42,6 +42,7 @@
 </div>
 
 <script>
+      <script>
     const menu = {
         "🌯 Roll": {"Veg Roll": 100, "Frankie Roll": 120},
         "🥟 Momos": {"Steam Momos": 100, "Fried Momos": 120},
@@ -56,28 +57,35 @@
         "🥞 डोसा": {"Masala Dosa": 100, "Plain Dosa": 80, "Paneer Masala Dosa": 130, "Cheese Masala Dosa": 140, "Pizza Dosa": 200, "Sargam Dosa": 250, "Morpankh Dosa": 399}
     };
 
-    };
-
+    let cart = {};
     const container = document.getElementById('menu-container');
-    let cart = {}, total = 0;
 
     for (let cat in menu) {
         container.innerHTML += `<div class="main-category" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display==='block'?'none':'block'">${cat} <span>▼</span></div><div class="category-content" id="${cat.replace(/ /g, '_')}"></div>`;
         for (let item in menu[cat]) {
-            document.getElementById(cat.replace(/ /g, '_')).innerHTML += `<div class="food-card">${item} <span>₹${menu[cat][item]}</span> <button class="add-btn" onclick="add('${item}', ${menu[cat][item]})">Add</button></div>`;
+            document.getElementById(cat.replace(/ /g, '_')).innerHTML += `<div class="food-card">${item} <span>₹${menu[cat][item]}</span> <div class="btn-group"><button class="btn" style="background:#ff4444" onclick="update('${item}', -${menu[cat][item]})">-</button><button class="btn" style="background:#d4af37" onclick="update('${item}', ${menu[cat][item]})">+</button></div></div>`;
         }
     }
 
-    function add(n, p) { cart[n] = (cart[n]||0)+1; total += p; document.getElementById('total').innerText = total; }
-       function order() { 
-        let name = document.getElementById('custName').value;
-        let details = document.getElementById('dine').value;
-        if(!name) { alert("अपना नाम लिखें!"); return; }
-        let msg = `*ORDER - Morpankh Cafe & Restro*%0A👤 Name: ${name}%0A📍 Details: ${details}%0A--------------------------%0A`;
-        for(let i in cart) if(cart[i] > 0) msg += `${i} x ${cart[i]}%0A`;
-        msg += `--------------------------%0A💰 Total Bill: ₹${total}`;
+    function update(item, price) {
+        if (!cart[item]) cart[item] = { qty: 0, price: Math.abs(price) };
+        cart[item].qty += (price > 0 ? 1 : -1);
+        if (cart[item].qty < 0) cart[item].qty = 0;
+        
+        let total = 0;
+        for (let i in cart) total += (cart[i].qty * cart[i].price);
+        document.getElementById('total').innerText = total;
+    }
+
+    function order() {
+        let total = document.getElementById('total').innerText;
+        let msg = "Morpankh Order:%0A";
+        for (let i in cart) if(cart[i].qty > 0) msg += `${i} x ${cart[i].qty}%0A`;
+        msg += `Total Bill: ₹${total}`;
         window.open("https://wa.me/917014808515?text=" + msg);
     }
+</script>
+  }
 
     }
 </script>
