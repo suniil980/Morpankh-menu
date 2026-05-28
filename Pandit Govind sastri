@@ -2,41 +2,58 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>पंडित गोविंद शास्त्री जी</title>
+    <title>पंडित गोविंद शास्त्री</title>
     <style>
-        body { background: #000; color: #FFD700; font-family: 'Arial Black', sans-serif; margin: 0; text-align: center; }
-        .main-header { padding: 50px 10px; border-bottom: 5px solid #FFD700; }
-        .name { font-size: 60px; text-transform: uppercase; margin: 0; }
-        .whatsapp-box { margin: 40px; }
-        .wa-btn { background: #25D366; color: #fff; padding: 30px 50px; font-size: 40px; text-decoration: none; border-radius: 50px; font-weight: bold; }
-        .service-list { padding: 20px; }
-        .item { background: #222; padding: 40px; margin: 30px 0; border: 3px solid #FFD700; border-radius: 30px; font-size: 40px; }
-        .item span { display: block; font-size: 25px; color: #fff; margin-top: 15px; }
+        body { 
+            background-color: #fff4e6; 
+            font-family: 'Kruti Dev', 'Arial', sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0; 
+        }
+        .mandir-header { 
+            border: 5px solid #d4af37; 
+            padding: 30px; 
+            background-color: #ffead0; 
+            border-radius: 20px;
+        }
+        h1 { font-size: 50px; color: #8b4513; margin: 10px 0; }
+        h2 { font-size: 40px; color: #a52a2a; margin: 10px 0; }
+        .specialist { font-size: 35px; color: #555; margin: 10px 0; }
+        
+        .whatsapp-btn { 
+            display: inline-block; 
+            background-color: #25d366; 
+            color: white; 
+            padding: 30px 50px; 
+            font-size: 40px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            margin: 30px 0; 
+            font-weight: bold;
+        }
+        .service-list { font-size: 35px; text-align: left; display: inline-block; margin-top: 20px; }
+        .service-item { margin: 20px 0; border-bottom: 2px dashed #8b4513; padding-bottom: 10px; }
     </style>
 </head>
 <body>
 
-<div class="main-header">
-    <p style="font-size: 30px;">|| ॐ नमो भगवते वासुदेवाय ||</p>
-    <h1 class="name">पंडित गोविंद शास्त्री</h1>
-    <p style="font-size: 35px;">वैदिक ज्योतिष एवं अनुष्ठान विशेषज्ञ</p>
-</div>
-
-<div class="whatsapp-box">
-    <a href="https://wa.me/919610301011" class="wa-btn">📞 अभी संपर्क करें</a>
+<div class="mandir-header">
+    <h1>ॐ पंडित गोविंद शास्त्री</h1>
+    <div class="specialist">भागवत कथा एवं कर्मकांड विशेषज्ञ</div>
+    
+    <!-- WhatsApp Button Sabse Upar -->
+    <a href="https://wa.me/919610301011?text=Pranam%20Pandit%20Ji,%20mujhe%20appointment%20chahiye." class="whatsapp-btn">📞 व्हाट्सएप पर संपर्क करें</a>
 </div>
 
 <div class="service-list">
-    <div class="item">📖 श्रीमद् भागवत कथा
-        <span>संगीतमयी कथा एवं भक्तिमय आयोजन</span>
-    </div>
-    <div class="item">🔥 कर्मकांड एवं पूजा
-        <span>गृह प्रवेश, हवन एवं समस्त संस्कार</span>
-    </div>
-    <div class="item">🔮 ज्योतिष एवं हस्तरेखा
-        <span>कुंडली मिलान एवं सटीक भविष्यफल</span>
-    </div>
+    <div class="service-item">📖 श्रीमद् भागवत कथा (Specialist)</div>
+    <div class="service-item">🔥 वैदिक कर्मकांड</div>
+    <div class="service-item">🔮 हस्तरेखा एवं ज्योतिष</div>
+    <div class="service-item">🙏 सुंदरकांड एवं पाठ</div>
 </div>
+
+<h2 style="margin-top: 40px;">संपर्क: 9610301011</h2>
 
 </body>
 </html>
