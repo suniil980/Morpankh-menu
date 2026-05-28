@@ -2,69 +2,68 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>पंडित गोविंद शास्त्री | वैदिक ज्योतिष एवं अनुष्ठान</title>
+    <title>ॐ पंडित गोविंद शास्त्री जी</title>
     <style>
-        body { background: #fffaf0; color: #4a2c00; font-family: 'Georgia', serif; margin: 0; padding-bottom: 80px; }
-        .hero { background: linear-gradient(135deg, #ff9933, #ffcc33); color: #fff; padding: 30px 10px; text-align: center; }
-        .category { background: #deb887; color: #fff; padding: 10px; margin-top: 20px; font-weight: bold; text-align: center; }
-        .service { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #deb887; align-items: center; }
-        .btn { background: #4a2c00; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
-        .cart-bar { position: fixed; bottom: 0; width: 100%; background: #4a2c00; color: #fff; padding: 15px; text-align: center; box-sizing: border-box; }
+        body { background: #fffaf0; font-family: 'Georgia', serif; color: #4a2c00; margin: 0; padding-bottom: 120px; }
+        .top-banner { background: #ff8c00; color: white; padding: 30px; text-align: center; border-bottom: 6px solid #d4af37; }
+        h1 { font-size: 36px; margin: 0; }
+        .hero-text { font-size: 22px; font-weight: bold; margin-top: 15px; }
+        .section-title { background: #d4af37; color: black; padding: 20px; font-size: 28px; font-weight: bold; text-align: center; margin-top: 20px; }
+        .service-box { background: white; padding: 25px; border: 2px solid #d4af37; margin: 15px; border-radius: 12px; font-size: 22px; line-height: 1.6; }
+        .book-btn { background: #8b4513; color: white; border: none; padding: 15px 30px; font-size: 20px; border-radius: 8px; cursor: pointer; display: block; width: 100%; margin-top: 15px; }
+        .bottom-bar { position: fixed; bottom: 0; width: 100%; background: #4a2c00; color: white; padding: 20px; text-align: center; font-size: 24px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="hero">
-    <h1>ॐ पंडित गोविंद शास्त्री</h1>
-    <p>भागवत कथा, कर्मकांड, हस्तरेखा एवं वैदिक अनुष्ठान विशेषज्ञ</p>
-    <p><b>संपर्क:</b> 9610301011</p>
+<div class="top-banner">
+    <h1>ॐ पंडित गोविंद शास्त्री जी</h1>
+    <div class="hero-text">वेद, ज्योतिष, भागवत कथा एवं कर्मकांड विशेषज्ञ</div>
 </div>
 
-<div id="service-container"></div>
+<div class="section-title">🚩 हमारी मुख्य सेवाएं 🚩</div>
 
-<div class="cart-bar">
-    <div>कुल दक्षिणा: ₹<span id="total">0</span></div>
-    <button class="btn" onclick="order()" style="width: 90%; margin-top: 10px;">बुकिंग के लिए व्हाट्सएप करें</button>
+<div class="service-box">
+    <strong>📖 श्रीमद् भागवत कथा एवं राम कथा:</strong><br>
+    विद्वान पंडितों द्वारा सुमधुर संगीत और भक्तिमय वातावरण में भागवत कथा का आयोजन। 
+    <button class="book-btn" onclick="book('श्रीमद् भागवत कथा')">भागवत कथा के लिए बुकिंग</button>
+</div>
+
+<div class="service-box">
+    <strong>🔥 वैदिक कर्मकांड एवं पूजा:</strong><br>
+    गृह प्रवेश, भूमि पूजन, नामकरण, हवन-यज्ञ और सभी प्रकार के वैदिक संस्कार पूरे विधि-विधान से।
+    <button class="book-btn" onclick="book('वैदिक कर्मकांड एवं पूजा')">पूजा हेतु अपॉइंटमेंट</button>
+</div>
+
+<div class="service-box">
+    <strong>🔮 हस्तरेखा एवं ज्योतिष परामर्श:</strong><br>
+    कुंडली मिलान, दोष निवारण, हस्तरेखा विश्लेषण और सटीक ज्योतिषीय समाधान।
+    <button class="book-btn" onclick="book('ज्योतिष एवं हस्तरेखा')">ज्योतिष परामर्श लें</button>
+</div>
+
+<div class="service-box">
+    <strong>🙏 सुंदरकांड एवं पाठ:</strong><br>
+    घर में सुख-समृद्धि हेतु सुंदरकांड पाठ, हनुमान चालीसा अनुष्ठान और सत्यनारायण कथा।
+    <button class="book-btn" onclick="book('सुंदरकांड/पाठ')">अनुष्ठान हेतु बुकिंग</button>
+</div>
+
+<div class="bottom-bar">
+    📞 संपर्क: 9610301011
 </div>
 
 <script>
-    const services = {
-        "📖 प्रमुख कथा एवं पाठ": {"श्रीमद् भागवत कथा": 51000, "राम कथा": 31000, "सत्यनारायण पाठ": 2100, "सुंदरकांड पाठ": 1500},
-        "🔥 कर्मकांड एवं अनुष्ठान": {"गृह प्रवेश": 2100, "भूमि पूजन": 3100, "हवन/यज्ञ": 5100, "नामकरण संस्कार": 1100},
-        "🔮 ज्योतिष एवं हस्तरेखा": {"हस्तरेखा परामर्श": 500, "कुंडली मिलान": 500, "संपूर्ण कुंडली विश्लेषण": 1100, "मुहूर्त विचार": 500}
-    };
-
-    let cart = {};
-    const container = document.getElementById('service-container');
-
-    for (let cat in services) {
-        container.innerHTML += `<div class="category">${cat}</div>`;
-        for (let item in services[cat]) {
-            container.innerHTML += `<div class="service">${item} <span>₹${services[cat][item]}</span> <button class="btn" onclick="update('${item}', ${services[cat][item]})">जोड़ें</button></div>`;
+    function book(serviceName) {
+        let name = prompt("कृपया अपना शुभ नाम लिखें:");
+        let date = prompt("पूजा या अपॉइंटमेंट के लिए तारीख और समय बताएं:");
+        
+        if (name && date) {
+            let msg = `🚩 *नई बुकिंग का अनुरोध* 🚩%0A%0Aपंडित जी, मेरे यहाँ ${serviceName} करवानी है।%0A%0A👤 *नाम:* ${name}%0A📅 *तारीख/समय:* ${date}%0A%0Aकृपया संपर्क करें।`;
+            window.open("https://wa.me/919610301011?text=" + msg);
+        } else {
+            alert("कृपया नाम और समय की जानकारी दें।");
         }
     }
-
-    function update(item, price) {
-        if (!cart[item]) cart[item] = 0;
-        cart[item] += price;
-        let total = 0;
-        for (let i in cart) total += cart[i];
-        document.getElementById('total').innerText = total;
-    }
-
-    function order() {
-        let name = prompt("कृपया अपना नाम लिखें:");
-        let date = prompt("पूजा या अपॉइंटमेंट की तारीख बताएं:");
-        if(!name || !date) { alert("कृपया नाम और तारीख भरें!"); return; }
-
-        let total = document.getElementById('total').innerText;
-        let msg = `*पंडित गोविंद शास्त्री जी को नई बुकिंग रिक्वेस्ट*%0A%0A👤 ग्राहक नाम: ${name}%0A📅 इच्छित तारीख: ${date}%0A--------------------------%0A`;
-        for (let i in cart) if(cart[i] > 0) msg += `✅ ${i} (₹${cart[i]})%0A`;
-        msg += `--------------------------%0A💰 अनुमानित दक्षिणा: ₹${total}%0A%0Aकृपया इस बुकिंग को स्वीकार करें।`;
-        
-        window.open("https://wa.me/919610301011?text=" + msg);
-    }
 </script>
+
 </body>
 </html>
