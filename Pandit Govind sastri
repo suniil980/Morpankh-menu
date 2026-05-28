@@ -1,71 +1,17 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <title>Pandit Govind Shastri | Vedic Services</title>
-    <style>
-        body { background: #fffaf0; color: #4a2c00; font-family: 'Georgia', serif; padding: 20px; }
-        .header { text-align: center; border-bottom: 3px solid #ff9933; padding-bottom: 15px; }
-        .hero { background: #ff9933; color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
-        .category { background: #fdf5e6; border: 1px solid #deb887; padding: 15px; margin: 10px 0; border-radius: 8px; font-weight: bold; }
-        .service { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #deb887; }
-        .btn { background: #ff9933; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #4a2c00; color: white; padding: 15px; text-align: center; }
-    </style>
-</head>
-<body>
-
-<div class="header">
-    <h1>ॐ पंडित गोविंद शास्त्री</h1>
-    <p>वेद, ज्योतिष एवं अनुष्ठान विशेषज्ञ</p>
-</div>
-
-<div class="hero">
-    <h3>"सत्यं वद, धर्मं चर"</h3>
-    <p>शुभ कार्यों के लिए आज ही परामर्श लें</p>
-</div>
-
-<div id="service-container"></div>
-
-<div class="cart-bar">
-    <div>चयनित सेवाएँ: <span id="cart-count">0</span> | Total Dakshina: ₹<span id="total">0</span></div>
-    <button class="btn" onclick="order()" style="margin-top:10px; width:90%">WhatsApp पर संपर्क करें</button>
-</div>
-
 <script>
-    const services = {
-        "🙏 मुख्य अनुष्ठान": {"सत्यनारायण कथा": 1100, "गृह प्रवेश": 2100, "हवन/यज्ञ": 3100},
-        "🔮 ज्योतिष सेवा": {"कुंडली मिलान": 500, "वर्षफल": 1100, "मुहूर्त विचार": 500},
-        "✨ विशेष सेवा": {"दोष निवारण पूजा": 5100, "नामकरण संस्कार": 1100}
-    };
-
-    let cart = {};
-    const container = document.getElementById('service-container');
-
-    for (let cat in services) {
-        container.innerHTML += `<div class="category">${cat}</div>`;
-        for (let item in services[cat]) {
-            container.innerHTML += `<div class="service">${item} <span>₹${services[cat][item]}</span> <button class="btn" onclick="update('${item}', ${services[cat][item]})">+</button></div>`;
-        }
-    }
-
-    function update(item, price) {
-        if (!cart[item]) cart[item] = 0;
-        cart[item] += price;
-        let total = 0;
-        for (let i in cart) total += cart[i];
-        document.getElementById('total').innerText = total;
-        document.getElementById('cart-count').innerText = Object.keys(cart).length;
-    }
+    // ... upar wala menu code waisa hi rahega ...
 
     function order() {
+        let name = prompt("अपना नाम लिखें:");
+        let time = prompt("किस समय/तारीख पर अपॉइंटमेंट चाहिए?");
+        if(!name || !time) { alert("कृपया नाम और समय बताएं!"); return; }
+
         let total = document.getElementById('total').innerText;
-        let msg = "Pranam Pandit Ji, mujhe in services ki booking karni hai:%0A";
-        for (let i in cart) msg += `- ${i}%0A`;
-        msg += `Kul Dakshina: ₹${total}`;
+        let msg = `*पंडित गोविंद शास्त्री जी को नई बुकिंग:%0A%0A👤 नाम: ${name}%0A📅 समय: ${time}%0A--------------------------%0A`;
+        for (let i in cart) msg += `- ${i} (₹${cart[i]})%0A`;
+        msg += `--------------------------%0A💰 कुल दक्षिणा: ₹${total}`;
+        
+        // Yahan Pandit ji ka WhatsApp number daalein
         window.open("https://wa.me/917014808515?text=" + msg);
     }
 </script>
-
-</body>
-</html>
