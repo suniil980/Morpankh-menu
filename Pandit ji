@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>पंडित गोविंद शास्त्री</title>
+    <style>
+        body { 
+            background-color: #fff4e6; 
+            font-family: 'Kruti Dev', 'Arial', sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0; 
+        }
+        .mandir-header { 
+            border: 5px solid #d4af37; 
+            padding: 30px; 
+            background-color: #ffead0; 
+            border-radius: 20px;
+        }
+        h1 { font-size: 50px; color: #8b4513; margin: 10px 0; }
+        h2 { font-size: 40px; color: #a52a2a; margin: 10px 0; }
+        .specialist { font-size: 35px; color: #555; margin: 10px 0; }
+        
+        .whatsapp-btn { 
+            display: inline-block; 
+            background-color: #25d366; 
+            color: white; 
+            padding: 30px 50px; 
+            font-size: 40px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            margin: 30px 0; 
+            font-weight: bold;
+        }
+        .service-list { font-size: 35px; text-align: left; display: inline-block; margin-top: 20px; }
+        .service-item { margin: 20px 0; border-bottom: 2px dashed #8b4513; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="mandir-header">
+    <h1>ॐ पंडित गोविंद शास्त्री</h1>
+    <div class="specialist">भागवत कथा एवं कर्मकांड विशेषज्ञ</div>
+    
+    <!-- WhatsApp Button Sabse Upar -->
+    <a href="https://wa.me/919610301011?text=Pranam%20Pandit%20Ji,%20mujhe%20appointment%20chahiye." class="whatsapp-btn">📞 व्हाट्सएप पर संपर्क करें</a>
+</div>
+
+<div class="service-list">
+    <div class="service-item">📖 श्रीमद् भागवत कथा (Specialist)</div>
+    <div class="service-item">🔥 वैदिक कर्मकांड</div>
+    <div class="service-item">🔮 हस्तरेखा एवं ज्योतिष</div>
+    <div class="service-item">🙏 सुंदरकांड एवं पाठ</div>
+</div>
+
+<h2 style="margin-top: 40px;">संपर्क: 9610301011</h2>
+
+</body>
+</html>
+
