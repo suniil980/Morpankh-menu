@@ -1,0 +1,265 @@
+export default function TronixHubWebsite() {
+  const brands = [
+    "Fischer",
+    "Bruker",
+    "Dolfin",
+    "NeoAlfa",
+    "Quantum",
+    "Gold Mexx",
+    "Medical Setup",
+    "Industrial Automation",
+  ];
+
+  const categories = [
+    {
+      title: "XRF",
+      icon: "⚙️",
+      items: [
+        "XRF Machines",
+        "Calibration",
+        "Repair",
+        "AMC",
+        "New Parts",
+        "Old Parts",
+      ],
+    },
+    {
+      title: "LASER",
+      icon: "🔦",
+      items: [
+        "Laser Repair",
+        "Laser Machines",
+        "Laser AMC",
+        "Laser Parts",
+        "Laser Engineers",
+      ],
+    },
+    {
+      title: "MEDICAL",
+      icon: "🏥",
+      items: [
+        "Medical Machines",
+        "Medical Repair",
+        "Medical Parts",
+        "Medical Engineers",
+      ],
+    },
+    {
+      title: "INDUSTRIAL",
+      icon: "🏭",
+      items: [
+        "PLC",
+        "Automation",
+        "Industrial Repair",
+        "Industrial Parts",
+      ],
+    },
+  ];
+
+  const adminPanel = [
+    "Customer Leads",
+    "Engineer Management",
+    "Machine Listings",
+    "Parts Listings",
+    "Company Management",
+    "Banner Slider",
+    "WhatsApp Support",
+    "Ads Management",
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-100">
+
+      {/* HERO */}
+      <section className="bg-black text-white py-14 px-6">
+        <div className="max-w-7xl mx-auto text-center">
+
+          <h1 className="text-6xl font-bold">
+            TronixHub
+          </h1>
+
+          <p className="mt-5 text-xl text-gray-300">
+            Smart Industrial Service Network
+          </p>
+
+        </div>
+      </section>
+
+      {/* BRAND SLIDER */}
+      <section className="bg-white py-8 overflow-hidden border-b">
+
+        <div className="flex gap-6 animate-pulse px-6">
+
+          {brands.map((brand, index) => (
+            <div
+              key={index}
+              className="min-w-[220px] bg-black text-white rounded-3xl p-6 text-center shadow-xl border border-yellow-500"
+            >
+              <div className="text-2xl font-bold">
+                {brand}
+              </div>
+
+              <button className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded-xl font-semibold">
+                View Details
+              </button>
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* CATEGORY SECTION */}
+      <section className="py-14 px-6">
+
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          {categories.map((cat, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-3xl shadow-xl p-8 hover:scale-105 transition"
+            >
+
+              <div className="text-6xl mb-5">
+                {cat.icon}
+              </div>
+
+              <h2 className="text-3xl font-bold mb-6">
+                {cat.title}
+              </h2>
+
+              <div className="space-y-3">
+
+                {cat.items.map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-gray-100 rounded-2xl px-4 py-3 font-semibold"
+                  >
+                    {item}
+                  </div>
+                ))}
+
+              </div>
+
+              <button className="w-full mt-8 bg-black text-white py-4 rounded-2xl font-bold">
+                Open {cat.title}
+              </button>
+
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* QUICK CUSTOMER FORM */}
+      <section className="py-14 px-6 bg-white">
+
+        <div className="max-w-5xl mx-auto bg-gray-100 rounded-3xl p-10 shadow-2xl">
+
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold">
+              Customer Inquiry
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            <input
+              type="text"
+              placeholder="Name"
+              className="p-4 rounded-2xl border"
+            />
+
+            <input
+              type="text"
+              placeholder="Mobile"
+              className="p-4 rounded-2xl border"
+            />
+
+            <input
+              type="text"
+              placeholder="Company"
+              className="p-4 rounded-2xl border"
+            />
+
+            <input
+              type="text"
+              placeholder="Location"
+              className="p-4 rounded-2xl border"
+            />
+
+            <textarea
+              placeholder="Requirement"
+              className="md:col-span-2 h-32 p-4 rounded-2xl border"
+            ></textarea>
+
+            <button className="md:col-span-2 bg-black text-white py-4 rounded-2xl font-bold">
+              Submit Inquiry
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ADMIN PANEL */}
+      <section className="bg-black text-white py-14 px-6">
+
+        <div className="max-w-7xl mx-auto">
+
+          <div className="text-center mb-12">
+
+            <div className="inline-block bg-yellow-500 text-black px-8 py-4 rounded-2xl text-4xl font-bold">
+              ADMIN PANEL
+            </div>
+
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {adminPanel.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/10 rounded-3xl p-6 shadow-xl"
+              >
+
+                <div className="text-4xl mb-4">
+                  📊
+                </div>
+
+                <h3 className="text-xl font-bold">
+                  {item}
+                </h3>
+
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* FOOTER */}
+      <section className="bg-yellow-500 py-10 text-center">
+
+        <h2 className="text-4xl font-bold text-black">
+          TronixHub
+        </h2>
+
+        <p className="mt-4 text-xl font-semibold text-black">
+          Smart Industrial Service Network
+        </p>
+
+        <div className="mt-6 text-black font-bold space-y-2">
+          <div>📞 +91 7688990096</div>
+          <div>🌐 www.tronixhub.online</div>
+        </div>
+
+      </section>
+
+    </div>
+  );
+}
