@@ -2,65 +2,58 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>ॐ पंडित गोविंद शास्त्री जी</title>
+    <title>पंडित गोविंद शास्त्री | वैदिक अनुष्ठान</title>
     <style>
-        body { background: #fffaf0; font-family: 'Georgia', serif; color: #4a2c00; margin: 0; padding-bottom: 120px; }
-        .top-banner { background: #ff8c00; color: white; padding: 30px; text-align: center; border-bottom: 6px solid #d4af37; }
-        h1 { font-size: 36px; margin: 0; }
-        .hero-text { font-size: 22px; font-weight: bold; margin-top: 15px; }
-        .section-title { background: #d4af37; color: black; padding: 20px; font-size: 28px; font-weight: bold; text-align: center; margin-top: 20px; }
-        .service-box { background: white; padding: 25px; border: 2px solid #d4af37; margin: 15px; border-radius: 12px; font-size: 22px; line-height: 1.6; }
-        .book-btn { background: #8b4513; color: white; border: none; padding: 15px 30px; font-size: 20px; border-radius: 8px; cursor: pointer; display: block; width: 100%; margin-top: 15px; }
-        .bottom-bar { position: fixed; bottom: 0; width: 100%; background: #4a2c00; color: white; padding: 20px; text-align: center; font-size: 24px; font-weight: bold; }
+        body { background: #fdf5e6; font-family: 'Poppins', sans-serif; color: #5d4037; margin: 0; padding-bottom: 100px; }
+        .header-section { background: linear-gradient(to bottom, #ff8c00, #ffb347); color: #fff; padding: 40px 20px; text-align: center; border-bottom: 8px solid #d4af37; }
+        h1 { font-size: 45px; margin: 0; text-shadow: 2px 2px 4px #000; }
+        .intro { font-size: 22px; font-weight: bold; margin-top: 10px; color: #fff; }
+        .services-wrapper { padding: 20px; }
+        .card { background: #ffffff; padding: 25px; margin-bottom: 20px; border-left: 10px solid #d4af37; border-radius: 15px; box-shadow: 5px 5px 15px rgba(0,0,0,0.1); }
+        h2 { font-size: 28px; color: #8b4513; margin: 0 0 10px 0; }
+        p { font-size: 20px; line-height: 1.5; margin: 0 0 15px 0; }
+        .btn-book { background: #d4af37; color: #000; padding: 15px 30px; font-size: 20px; font-weight: bold; border: none; border-radius: 50px; cursor: pointer; width: 100%; text-transform: uppercase; }
+        .footer-sticky { position: fixed; bottom: 0; width: 100%; background: #5d4037; color: #ffd700; padding: 20px; text-align: center; font-size: 26px; font-weight: bold; box-shadow: 0 -5px 10px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
-<div class="top-banner">
-    <h1>ॐ पंडित गोविंद शास्त्री जी</h1>
-    <div class="hero-text">वेद, ज्योतिष, भागवत कथा एवं कर्मकांड विशेषज्ञ</div>
+<div class="header-section">
+    <h1>ॐ पंडित गोविंद शास्त्री</h1>
+    <div class="intro">।। सनातन धर्म के रक्षक एवं वैदिक विद्वान ।।</div>
 </div>
 
-<div class="section-title">🚩 हमारी मुख्य सेवाएं 🚩</div>
+<div class="services-wrapper">
+    <div class="card">
+        <h2>📖 श्रीमद् भागवत कथा</h2>
+        <p>भक्ति और ज्ञान की पावन गंगा। विद्वान पंडितों द्वारा संगीतमयी भागवत कथा का आयोजन, जिससे जीवन में शांति और मोक्ष का मार्ग प्रशस्त हो।</p>
+        <button class="btn-book" onclick="book('श्रीमद् भागवत कथा')">अभी बुक करें</button>
+    </div>
 
-<div class="service-box">
-    <strong>📖 श्रीमद् भागवत कथा एवं राम कथा:</strong><br>
-    विद्वान पंडितों द्वारा सुमधुर संगीत और भक्तिमय वातावरण में भागवत कथा का आयोजन। 
-    <button class="book-btn" onclick="book('श्रीमद् भागवत कथा')">भागवत कथा के लिए बुकिंग</button>
+    <div class="card">
+        <h2>🔥 वैदिक कर्मकांड</h2>
+        <p>गृह प्रवेश, भूमि पूजन, नामकरण और समस्त वैदिक संस्कार पूरे विधि-विधान से संपन्न कराए जाते हैं।</p>
+        <button class="btn-book" onclick="book('वैदिक कर्मकांड')">अभी बुक करें</button>
+    </div>
+
+    <div class="card">
+        <h2>🔮 हस्तरेखा एवं ज्योतिष</h2>
+        <p>कुंडली विश्लेषण, हस्तरेखा के माध्यम से भविष्य का सटीक आकलन और ग्रह-दोष निवारण के अचूक उपाय।</p>
+        <button class="btn-book" onclick="book('हस्तरेखा एवं ज्योतिष')">अभी बुक करें</button>
+    </div>
 </div>
 
-<div class="service-box">
-    <strong>🔥 वैदिक कर्मकांड एवं पूजा:</strong><br>
-    गृह प्रवेश, भूमि पूजन, नामकरण, हवन-यज्ञ और सभी प्रकार के वैदिक संस्कार पूरे विधि-विधान से।
-    <button class="book-btn" onclick="book('वैदिक कर्मकांड एवं पूजा')">पूजा हेतु अपॉइंटमेंट</button>
-</div>
-
-<div class="service-box">
-    <strong>🔮 हस्तरेखा एवं ज्योतिष परामर्श:</strong><br>
-    कुंडली मिलान, दोष निवारण, हस्तरेखा विश्लेषण और सटीक ज्योतिषीय समाधान।
-    <button class="book-btn" onclick="book('ज्योतिष एवं हस्तरेखा')">ज्योतिष परामर्श लें</button>
-</div>
-
-<div class="service-box">
-    <strong>🙏 सुंदरकांड एवं पाठ:</strong><br>
-    घर में सुख-समृद्धि हेतु सुंदरकांड पाठ, हनुमान चालीसा अनुष्ठान और सत्यनारायण कथा।
-    <button class="book-btn" onclick="book('सुंदरकांड/पाठ')">अनुष्ठान हेतु बुकिंग</button>
-</div>
-
-<div class="bottom-bar">
+<div class="footer-sticky">
     📞 संपर्क: 9610301011
 </div>
 
 <script>
-    function book(serviceName) {
-        let name = prompt("कृपया अपना शुभ नाम लिखें:");
-        let date = prompt("पूजा या अपॉइंटमेंट के लिए तारीख और समय बताएं:");
-        
-        if (name && date) {
-            let msg = `🚩 *नई बुकिंग का अनुरोध* 🚩%0A%0Aपंडित जी, मेरे यहाँ ${serviceName} करवानी है।%0A%0A👤 *नाम:* ${name}%0A📅 *तारीख/समय:* ${date}%0A%0Aकृपया संपर्क करें।`;
+    function book(service) {
+        let name = prompt("अपना शुभ नाम लिखें:");
+        let time = prompt("किस तारीख को अपॉइंटमेंट चाहिए?");
+        if(name && time) {
+            let msg = `🚩 *बुकिंग अनुरोध* 🚩%0A👤 नाम: ${name}%0A📅 समय: ${time}%0A📖 सेवा: ${service}%0A%0Aपंडित जी, कृपया संपर्क करें।`;
             window.open("https://wa.me/919610301011?text=" + msg);
-        } else {
-            alert("कृपया नाम और समय की जानकारी दें।");
         }
     }
 </script>
