@@ -1,17 +1,70 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पंडित गोविंद शास्त्री | वैदिक ज्योतिष एवं अनुष्ठान</title>
+    <style>
+        body { background: #fffaf0; color: #4a2c00; font-family: 'Georgia', serif; margin: 0; padding-bottom: 80px; }
+        .hero { background: linear-gradient(135deg, #ff9933, #ffcc33); color: #fff; padding: 30px 10px; text-align: center; }
+        .category { background: #deb887; color: #fff; padding: 10px; margin-top: 20px; font-weight: bold; text-align: center; }
+        .service { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #deb887; align-items: center; }
+        .btn { background: #4a2c00; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        .cart-bar { position: fixed; bottom: 0; width: 100%; background: #4a2c00; color: #fff; padding: 15px; text-align: center; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>ॐ पंडित गोविंद शास्त्री</h1>
+    <p>भागवत कथा, कर्मकांड, हस्तरेखा एवं वैदिक अनुष्ठान विशेषज्ञ</p>
+    <p><b>संपर्क:</b> 9610301011</p>
+</div>
+
+<div id="service-container"></div>
+
+<div class="cart-bar">
+    <div>कुल दक्षिणा: ₹<span id="total">0</span></div>
+    <button class="btn" onclick="order()" style="width: 90%; margin-top: 10px;">बुकिंग के लिए व्हाट्सएप करें</button>
+</div>
+
 <script>
-    // ... upar wala menu code waisa hi rahega ...
+    const services = {
+        "📖 प्रमुख कथा एवं पाठ": {"श्रीमद् भागवत कथा": 51000, "राम कथा": 31000, "सत्यनारायण पाठ": 2100, "सुंदरकांड पाठ": 1500},
+        "🔥 कर्मकांड एवं अनुष्ठान": {"गृह प्रवेश": 2100, "भूमि पूजन": 3100, "हवन/यज्ञ": 5100, "नामकरण संस्कार": 1100},
+        "🔮 ज्योतिष एवं हस्तरेखा": {"हस्तरेखा परामर्श": 500, "कुंडली मिलान": 500, "संपूर्ण कुंडली विश्लेषण": 1100, "मुहूर्त विचार": 500}
+    };
+
+    let cart = {};
+    const container = document.getElementById('service-container');
+
+    for (let cat in services) {
+        container.innerHTML += `<div class="category">${cat}</div>`;
+        for (let item in services[cat]) {
+            container.innerHTML += `<div class="service">${item} <span>₹${services[cat][item]}</span> <button class="btn" onclick="update('${item}', ${services[cat][item]})">जोड़ें</button></div>`;
+        }
+    }
+
+    function update(item, price) {
+        if (!cart[item]) cart[item] = 0;
+        cart[item] += price;
+        let total = 0;
+        for (let i in cart) total += cart[i];
+        document.getElementById('total').innerText = total;
+    }
 
     function order() {
-        let name = prompt("अपना नाम लिखें:");
-        let time = prompt("किस समय/तारीख पर अपॉइंटमेंट चाहिए?");
-        if(!name || !time) { alert("कृपया नाम और समय बताएं!"); return; }
+        let name = prompt("कृपया अपना नाम लिखें:");
+        let date = prompt("पूजा या अपॉइंटमेंट की तारीख बताएं:");
+        if(!name || !date) { alert("कृपया नाम और तारीख भरें!"); return; }
 
         let total = document.getElementById('total').innerText;
-        let msg = `*पंडित गोविंद शास्त्री जी को नई बुकिंग:%0A%0A👤 नाम: ${name}%0A📅 समय: ${time}%0A--------------------------%0A`;
-        for (let i in cart) msg += `- ${i} (₹${cart[i]})%0A`;
-        msg += `--------------------------%0A💰 कुल दक्षिणा: ₹${total}`;
+        let msg = `*पंडित गोविंद शास्त्री जी को नई बुकिंग रिक्वेस्ट*%0A%0A👤 ग्राहक नाम: ${name}%0A📅 इच्छित तारीख: ${date}%0A--------------------------%0A`;
+        for (let i in cart) if(cart[i] > 0) msg += `✅ ${i} (₹${cart[i]})%0A`;
+        msg += `--------------------------%0A💰 अनुमानित दक्षिणा: ₹${total}%0A%0Aकृपया इस बुकिंग को स्वीकार करें।`;
         
-        // Yahan Pandit ji ka WhatsApp number daalein
-        window.open("https://wa.me/917014808515?text=" + msg);
+        window.open("https://wa.me/919610301011?text=" + msg);
     }
 </script>
+</body>
+</html>
