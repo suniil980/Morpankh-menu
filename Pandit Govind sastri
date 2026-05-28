@@ -2,61 +2,46 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>पंडित गोविंद शास्त्री | वैदिक अनुष्ठान</title>
+    <title>पंडित गोविंद शास्त्री</title>
     <style>
-        body { background: #fdf5e6; font-family: 'Poppins', sans-serif; color: #5d4037; margin: 0; padding-bottom: 100px; }
-        .header-section { background: linear-gradient(to bottom, #ff8c00, #ffb347); color: #fff; padding: 40px 20px; text-align: center; border-bottom: 8px solid #d4af37; }
-        h1 { font-size: 45px; margin: 0; text-shadow: 2px 2px 4px #000; }
-        .intro { font-size: 22px; font-weight: bold; margin-top: 10px; color: #fff; }
-        .services-wrapper { padding: 20px; }
-        .card { background: #ffffff; padding: 25px; margin-bottom: 20px; border-left: 10px solid #d4af37; border-radius: 15px; box-shadow: 5px 5px 15px rgba(0,0,0,0.1); }
-        h2 { font-size: 28px; color: #8b4513; margin: 0 0 10px 0; }
-        p { font-size: 20px; line-height: 1.5; margin: 0 0 15px 0; }
-        .btn-book { background: #d4af37; color: #000; padding: 15px 30px; font-size: 20px; font-weight: bold; border: none; border-radius: 50px; cursor: pointer; width: 100%; text-transform: uppercase; }
-        .footer-sticky { position: fixed; bottom: 0; width: 100%; background: #5d4037; color: #ffd700; padding: 20px; text-align: center; font-size: 26px; font-weight: bold; box-shadow: 0 -5px 10px rgba(0,0,0,0.2); }
+        body { background: #fffaf0; font-family: sans-serif; color: #4a2c00; margin: 0; padding-bottom: 20px; }
+        
+        /* Header aur Button ko sabse upar */
+        .top-section { background: #ff8c00; padding: 30px; text-align: center; border-bottom: 8px solid #d4af37; }
+        h1 { font-size: 50px; margin: 0; color: #fff; }
+        .contact-btn { background: #25d366; color: white; padding: 25px 40px; font-size: 30px; font-weight: bold; border: none; border-radius: 50px; cursor: pointer; margin-top: 20px; display: inline-block; text-decoration: none; }
+
+        .section-title { background: #d4af37; padding: 20px; font-size: 40px; font-weight: bold; text-align: center; margin: 20px 0; }
+        
+        .card { background: white; padding: 40px; margin: 20px; border-left: 15px solid #d4af37; border-radius: 20px; box-shadow: 10px 10px 20px rgba(0,0,0,0.1); }
+        h2 { font-size: 40px; color: #8b4513; margin: 0 0 20px 0; }
+        p { font-size: 30px; line-height: 1.6; margin: 0; }
     </style>
 </head>
 <body>
 
-<div class="header-section">
+<div class="top-section">
     <h1>ॐ पंडित गोविंद शास्त्री</h1>
-    <div class="intro">।। सनातन धर्म के रक्षक एवं वैदिक विद्वान ।।</div>
+    <!-- WhatsApp Button Sabse Upar -->
+    <a href="https://wa.me/919610301011" class="contact-btn">📞 व्हाट्सएप पर संपर्क करें</a>
 </div>
 
-<div class="services-wrapper">
-    <div class="card">
-        <h2>📖 श्रीमद् भागवत कथा</h2>
-        <p>भक्ति और ज्ञान की पावन गंगा। विद्वान पंडितों द्वारा संगीतमयी भागवत कथा का आयोजन, जिससे जीवन में शांति और मोक्ष का मार्ग प्रशस्त हो।</p>
-        <button class="btn-book" onclick="book('श्रीमद् भागवत कथा')">अभी बुक करें</button>
-    </div>
+<div class="section-title">🚩 हमारी प्रमुख सेवाएं 🚩</div>
 
-    <div class="card">
-        <h2>🔥 वैदिक कर्मकांड</h2>
-        <p>गृह प्रवेश, भूमि पूजन, नामकरण और समस्त वैदिक संस्कार पूरे विधि-विधान से संपन्न कराए जाते हैं।</p>
-        <button class="btn-book" onclick="book('वैदिक कर्मकांड')">अभी बुक करें</button>
-    </div>
-
-    <div class="card">
-        <h2>🔮 हस्तरेखा एवं ज्योतिष</h2>
-        <p>कुंडली विश्लेषण, हस्तरेखा के माध्यम से भविष्य का सटीक आकलन और ग्रह-दोष निवारण के अचूक उपाय।</p>
-        <button class="btn-book" onclick="book('हस्तरेखा एवं ज्योतिष')">अभी बुक करें</button>
-    </div>
+<div class="card">
+    <h2>📖 श्रीमद् भागवत कथा</h2>
+    <p>भक्ति और ज्ञान की पावन गंगा। आपके घर/क्षेत्र में संगीतमयी भागवत कथा का भव्य आयोजन।</p>
 </div>
 
-<div class="footer-sticky">
-    📞 संपर्क: 9610301011
+<div class="card">
+    <h2>🔥 वैदिक कर्मकांड</h2>
+    <p>गृह प्रवेश, भूमि पूजन, हवन और सभी प्रकार के वैदिक संस्कार पूरे विधि-विधान से संपन्न कराए जाते हैं।</p>
 </div>
 
-<script>
-    function book(service) {
-        let name = prompt("अपना शुभ नाम लिखें:");
-        let time = prompt("किस तारीख को अपॉइंटमेंट चाहिए?");
-        if(name && time) {
-            let msg = `🚩 *बुकिंग अनुरोध* 🚩%0A👤 नाम: ${name}%0A📅 समय: ${time}%0A📖 सेवा: ${service}%0A%0Aपंडित जी, कृपया संपर्क करें।`;
-            window.open("https://wa.me/919610301011?text=" + msg);
-        }
-    }
-</script>
+<div class="card">
+    <h2>🔮 ज्योतिष एवं हस्तरेखा</h2>
+    <p>कुंडली विश्लेषण, हस्तरेखा से भविष्य का आकलन और ग्रह-दोष निवारण के अचूक उपाय।</p>
+</div>
 
 </body>
 </html>
